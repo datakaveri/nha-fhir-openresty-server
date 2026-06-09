@@ -1,39 +1,51 @@
 services:
-  fhir:
-    image: hapiproject/hapi:latest
-    container_name: hapi-fhir
-    ports:
-      - "8080:8080"
-    environment:
-      spring.datasource.url: "jdbc:postgresql://db:5432/hapi"
-      spring.datasource.username: admin
-      spring.datasource.password: admin
-      spring.datasource.driverClassName: org.postgresql.Driver
-      spring.jpa.properties.hibernate.dialect: ca.uhn.fhir.jpa.model.dialect.HapiFhirPostgres94Dialect
-      hapi.fhir.default_encoding: JSON
-      hapi.fhir.fhir_version: R4
-      hapi.fhir.allow_external_references: "true"
-      hapi.fhir.allow_multiple_delete: "true"
-    depends_on:
-      db:
-        condition: service_healthy
-    restart: unless-stopped
+    openresty:
+        build: ./openresty
+        container_name: openresty
+        ports:
+            - "8080:8080"
+        environment:
+            FHIR_USERNAME: "admin"
+            FHIR_PASSWORD: "admin"
+        depends_on:
+            - fhir
+        restart: unless-stopped
 
-  db:
-    image: postgres:16-alpine
-    container_name: hapi-postgres
-    environment:
-      POSTGRES_DB: hapi
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
-    volumes:
-      - hapi-pg-data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U admin -d hapi"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-    restart: unless-stopped
+    fhir:
+        build: .
+        container_name: hapi-fhir
+        expose:
+            - "8080"
+        environment:
+            spring.datasource.url: "jdbc:postgresql://db:5432/hapi"
+            spring.datasource.username: admin
+            spring.datasource.password: admin
+            spring.datasource.driverClassName: org.postgresql.Driver
+            spring.jpa.properties.hibernate.dialect: ca.uhn.fhir.jpa.model.dialect.HapiFhirPostgres94Dialect
+            hapi.fhir.default_encoding: JSON
+            hapi.fhir.fhir_version: R4
+            hapi.fhir.allow_external_references: "true"
+            hapi.fhir.allow_multiple_delete: "true"
+        depends_on:
+            db:
+                condition: service_healthy
+        restart: unless-stopped
+
+    db:
+        image: postgres:16-alpine
+        container_name: hapi-postgres
+        environment:
+            POSTGRES_DB: hapi
+            POSTGRES_USER: admin
+            POSTGRES_PASSWORD: admin
+        volumes:
+            - hapi-pg-data:/var/lib/postgresql/data
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U admin -d hapi"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+        restart: unless-stopped
 
 volumes:
-  hapi-pg-data:
+    hapi-pg-data:
