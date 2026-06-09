@@ -5,10 +5,11 @@ services:
         ports:
             - "8080:8080"
         environment:
-            FHIR_USERNAME: "admin"
-            FHIR_PASSWORD: "admin"
+            FHIR_USERNAME: "${FHIR_USERNAME}"
+            FHIR_PASSWORD: "${FHIR_PASSWORD}"
         depends_on:
-            - fhir
+            fhir:
+                condition: service_healthy
         restart: unless-stopped
 
     fhir:
@@ -18,17 +19,26 @@ services:
             - "8080"
         environment:
             spring.datasource.url: "jdbc:postgresql://db:5432/hapi"
-            spring.datasource.username: admin
-            spring.datasource.password: admin
+            spring.datasource.username: "${POSTGRES_USER}"
+            spring.datasource.password: "${POSTGRES_PASSWORD}"
             spring.datasource.driverClassName: org.postgresql.Driver
-            spring.jpa.properties.hibernate.dialect: ca.uhn.fhir.jpa.model.dialect.HapiFhirPostgres94Dialect
+            spring.jpa.properties.hibernate.dialect: ca.uhn.fhir.jpa.model.dialect.HapiFhirPostgresDialect
+            spring.jpa.open-in-view: "false"
             hapi.fhir.default_encoding: JSON
             hapi.fhir.fhir_version: R4
             hapi.fhir.allow_external_references: "true"
             hapi.fhir.allow_multiple_delete: "true"
+            springdoc.api-docs.enabled: "false"
+            springdoc.swagger-ui.enabled: "false"
         depends_on:
             db:
                 condition: service_healthy
+        healthcheck:
+            test: ["CMD-SHELL", "bash -c 'exec 3<>/dev/tcp/localhost/8080'"]
+            interval: 15s
+            timeout: 5s
+            retries: 20
+            start_period: 30s
         restart: unless-stopped
 
     db:
@@ -36,12 +46,12 @@ services:
         container_name: hapi-postgres
         environment:
             POSTGRES_DB: hapi
-            POSTGRES_USER: admin
-            POSTGRES_PASSWORD: admin
+            POSTGRES_USER: "${POSTGRES_USER}"
+            POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
         volumes:
             - hapi-pg-data:/var/lib/postgresql/data
         healthcheck:
-            test: ["CMD-SHELL", "pg_isready -U admin -d hapi"]
+            test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d hapi"]
             interval: 10s
             timeout: 5s
             retries: 5
