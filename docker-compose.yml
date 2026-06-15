@@ -9,7 +9,7 @@ services:
             FHIR_PASSWORD: "${FHIR_PASSWORD}"
         depends_on:
             fhir:
-                condition: service_healthy
+                condition: service_started
         restart: unless-stopped
 
     fhir:
@@ -33,12 +33,6 @@ services:
         depends_on:
             db:
                 condition: service_healthy
-        healthcheck:
-            test: ["CMD-SHELL", "bash -c 'exec 3<>/dev/tcp/localhost/8080'"]
-            interval: 15s
-            timeout: 5s
-            retries: 20
-            start_period: 30s
         restart: unless-stopped
 
     db:
