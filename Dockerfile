@@ -9,11 +9,13 @@ RUN jar xf /tmp/main.war && \
     cp /tmp/nha.png img/hapi_fhir_banner.png && \
     cp /tmp/nha.png img/hapi_fhir_banner_narrow.png && \
     cp /tmp/nha.png img/hapi_fhir_banner_right.png && \
+    cp /tmp/nha.png img/sample-logo.jpg && \
     cp /tmp/main.war /tmp/patched-main.war && \
     jar uf /tmp/patched-main.war \
       img/hapi_fhir_banner.png \
       img/hapi_fhir_banner_narrow.png \
-      img/hapi_fhir_banner_right.png
+      img/hapi_fhir_banner_right.png \
+      img/sample-logo.jpg
 
 # Final image: copy patched WAR back into the original HAPI image
 FROM hapiproject/hapi:latest

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-FHIR_URL="http://localhost:8180/fhir"
+FHIR_URL="http://localhost:8080/fhir"
 AUTH="Basic YWRtaW46cGFzc3dvcmQ="
-OUTPUT_DIR="$(dirname "$0")/output"
+OUTPUT_DIR="$(dirname "$0")/output_varianced"
 
 success=0
 failed=0

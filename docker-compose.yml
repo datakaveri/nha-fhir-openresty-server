@@ -1,4 +1,21 @@
 services:
+    catalogue-api:
+        build: ./fhir-catalogue-api
+        container_name: fhir-catalogue-api
+        ports:
+            - "${CATALOGUE_API_PORT:-8001}:8000"
+        environment:
+            FHIR_BASE_URL: "http://fhir:8080/fhir"
+            FHIR_USERNAME: ""
+            FHIR_PASSWORD: ""
+            COUNT_CACHE_TTL: "${COUNT_CACHE_TTL:-300}"
+            APP_TITLE: "${APP_TITLE:-FHIR Package Catalogue API}"
+            APP_VERSION: "${APP_VERSION:-1.0.0}"
+        depends_on:
+            fhir:
+                condition: service_started
+        restart: unless-stopped
+
     openresty:
         build: ./openresty
         container_name: openresty
