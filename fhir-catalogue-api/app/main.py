@@ -131,7 +131,7 @@ async def health(
     tags=["packages"],
     summary="List all AB-PMJAY packages",
     description=(
-        "Returns the four AB-PMJAY health benefit packages available in this "
+        "Returns the AB-PMJAY health benefit packages available in this "
         "catalogue. Each entry includes the package identifier, clinical label, "
         "primary procedure, and the number of SNOMED conditions and patient bundles."
     ),

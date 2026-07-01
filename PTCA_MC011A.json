@@ -1,0 +1,1188 @@
+{
+  "source_file": "PTCA_MD001A.md",
+  "input_text": "# Guidance document for processing PM-JAY packages Percutaneous Transluminal Coronary Angioplasty (PTCA)/ Systemic Thrombolysis, Coronary Artery Bypass Grafting & Low Cardiac Output syndrome requiring IABP insertion post-operatively. Specialty: Cardiology/ Cardiothoracic Vascular Surgery.",
+  "mapping_input_text": "PTCA (inclusive of diagnostic angiogram), Systemic Thrombolysis (for MI), Coronary artery bypass grafting (CABG), Low Cardiac Output syndrome requiring IABP insertion post-operatively. Clinical key pointers, stent types, contraindications for thrombolysis and IABP, and TMS check scenarios.",
+  "clinical_sections": [
+    {
+      "title": "Clinical key pointers",
+      "text": "Proceed for PTCA only if diagnosis made is backed by clinical signs, symptoms & investigation findings. Look for other causes of chest pain (Dissection of Aorta, Pleuritis/pneumonitis/embolism/pneumothorax, pericardial rub, neuralgia or herpes). Types of stents: Bare Metal Stents, Drug Eluting Stents. Absolute contraindications for systemic thrombolysis and IABP.",
+      "start_line": 71
+    }
+  ],
+  "used_clinical_sections_only": true,
+  "entities_mapped": [
+    "Percutaneous Transluminal Coronary Angioplasty / Systemic Thrombolysis",
+    "Package name ALOS",
+    "Package name Cardiac Catheterisation lab",
+    "PTCA, inclusive of diagnostic angiogram",
+    "40,600*",
+    "Systemic Thrombolysis (for MI)",
+    "for MI",
+    "iii",
+    "Coronary artery bypass grafting (CABG)",
+    "Low Cardiac Output syndrome requiring IABP insertion post",
+    "3 days",
+    "Upto 5 days",
+    "5-7 days",
+    "7-10 days (including Stay for CABG)",
+    "including Stay for CABG",
+    "Cardiac Catheterisation lab",
+    "CCU/ ICCU",
+    "Qualified cardiologist (DM/ DNB or equivalent in cardiology)",
+    "DM/ DNB or equivalent in cardiology",
+    "Qualified cardiothoracic surgeon (MCh/ DNB/ equivalent in cardiovascular thoracic surgery)",
+    "MCh/ DNB/ equivalent in cardiovascular thoracic surgery",
+    "Yes (or MD, medicine)",
+    "or MD, medicine",
+    "Indications",
+    "Bare Metal Stents (Cobalt Chromium platform)",
+    "Cobalt Chromium platform",
+    "Drug Eluting Stents (DES)",
+    "Post CABG",
+    "vii",
+    "viii",
+    "Low Cardiac Output syndrome requiring IABP insertion post operatively",
+    "iii. 2D ECHO",
+    "showing blockage",
+    "Troponins T/ I (if not available then CPK-MB",
+    "Yes (With pic of the site of incision post procedure)",
+    "With pic of the site of incision post procedure",
+    "Yes (Post Procedure)",
+    "Post Procedure",
+    "Yes (serial)",
+    "serial",
+    "Bare metal/ Drug eluting stent",
+    "indoor case papers",
+    "Cardiology",
+    "cardiovascular thoracic surgery",
+    "Medicine",
+    "inclusive of diagnostic angiogram",
+    "WORKFLOW",
+    "DHR-ICMR STW",
+    "for PTCA/ PCI/ IABP",
+    "for CABG",
+    "ongoing or within 12 hours",
+    "PTCA/ PCI",
+    "within 1 month",
+    "within 1month",
+    "except menstrual bleed",
+    "Bare-metal/ drug eluting Available",
+    "such as DCGI/ FDA/ CE/ ANDA, etc",
+    "stw.icmr.org.in",
+    "Proceed for PTCA only if diagnosis made is backed by clinical signs",
+    "symptoms & investigation findings",
+    "Look for other causes of chest pain as well (ongoing or within 12 hours)",
+    "Dissection of Aorta",
+    "Pleuritis/ pneumonitis/ embolism/ pneumothorax",
+    "pericardial rub",
+    "neuralgia",
+    "herpes",
+    "Refer the patient to angioplasty (PTCA/ PCI)/ thrombolysis capable hospital",
+    "if required",
+    "Types of Stents used in PTCA/ PCI and their broad indications for use",
+    "Absolute Contraindications for Systemic Thrombolysis",
+    "Previous intra-cerebral haemorrhage/ stroke of unknown etiology",
+    "Ischemic stroke in last 6 months",
+    "CNS neoplasm or AV malformation",
+    "Recent (within 1 month) major trauma/ surgery/ head injury",
+    "Recent (within 1month) major GI bleed",
+    "Known bleeding tendency (except menstrual bleed)",
+    "Severe uncontrolled hypertension",
+    "Aortic Dissection",
+    "Contraindications for Low Cardiac Output syndrome requiring IABP insertion post – operatively",
+    "Severe Aortic regurgitation",
+    "Suspected or known aortic dissection",
+    "Severe Aorto-iliac Occlusive disease",
+    "4 STANDARD TREATMENT WORKFLOW (DHR-ICMR STW)i- For clinicians/ treating doctor",
+    "Stable Angina",
+    "Consent duly signed by Patient & treating Cardiologist- Yes",
+    "Stenosis of >/=70% in one or more of the main coronary artery - Yes",
+    "Angiogram stills showing stent & post stent flow- Yes",
+    "Barcode of All stents (Bare-metal/ drug eluting Available)- Yes",
+    "Is Drug Eluting Stent used- Yes",
+    "reasons for using Drug Eluting stent mentioned- Yes",
+    "If Bare metal stent used",
+    "etc.)- Yes",
+    "Number of Stents used in </= 3- Yes",
+    "Reasons/ Justification if Multiple Stents Used- Yes",
+    "Significant ST Elevation in ECG – Yes",
+    "Positive Troponin Test/ Elevated Serial CPK-MB Levels- Yes",
+    "Absolute contraindications to Systemic Thrombolysis- No",
+    "Consent duly signed by Patient & Cardiothoracic Surgeon- Yes",
+    "Stenosis of >/=70% in two or three of the main coronary artery- Yes",
+    ">50% stenosis in left main coronary artery- Yes",
+    "Documentary evidence revealing that the patient is not amenable to PTCA/ PCI- Yes",
+    "Low Cardiac Output syndrome requiring IABP insertion post – operatively",
+    "Patient has a recent history of CABG- Yes",
+    "Patient developed deterioration in Cardiovascular Status Post CABG- Yes",
+    "Used as an add on package to CABG- Yes",
+    "Do the clinical notes justify poor hemodynamics and high usage of inotropic agentsYes",
+    "(iii) Suvarna Arogya Suraksha Trust (SAST)",
+    "Government of Karnataka",
+    "(iv) Cardiac and Cardiothoracic Surgery guidelines",
+    "Government of Maharashtra",
+    "//www.hopkinsmedicine.org/health/treatment-tests-and-therapies/intra-aortic-balloon-pump-therapy",
+    "nary artery bypass grafting",
+    "ST elevation Myocardial Infarction",
+    "Coronary artery bypass grafting",
+    "Recent major GI bleed",
+    "Coronary Artery Bypass Grafting (Coronary artery bypass grafting)",
+    "(iii) Suvarna Arogya Suraksha Trust"
+  ],
+  "processed_text": "PTCA (inclusive of diagnostic angiogram), Systemic Thrombolysis (for MI), Coronary artery bypass grafting (CABG), Low Cardiac Output syndrome requiring IABP insertion post-operatively. Clinical key pointers, stent types, contraindications for thrombolysis and IABP, and TMS check scenarios.",
+  "mappings": [
+    {
+      "entity": "Percutaneous Transluminal Coronary Angioplasty / Systemic Thrombolysis",
+      "snomed_code": "11101003",
+      "snomed_name": "Percutaneous transluminal coronary angioplasty",
+      "matched_via": "decomposed",
+      "generalized_term": "percutaneous transluminal coronary angioplasty",
+      "reason": "The leading concept PTCA maps to 11101003 (Percutaneous transluminal coronary angioplasty, procedure). Systemic thrombolysis maps separately to 426347000 (Thrombolytic therapy). A representative concept (PTCA) was chosen.",
+      "confidence": "High"
+    },
+    {
+      "entity": "Package name ALOS",
+      "snomed_code": "78717001",
+      "snomed_name": "Length of hospital stay",
+      "matched_via": "generalized",
+      "generalized_term": "average length of stay",
+      "reason": "ALOS = average length of stay. The nearest SNOMED CT concept is 78717001 (Length of stay, observable/finding). 'Package name' is an administrative label.",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Package name Cardiac Catheterisation lab",
+      "snomed_code": "225728007",
+      "snomed_name": "Cardiac catheterization laboratory",
+      "matched_via": "decomposed",
+      "generalized_term": "cardiac catheterization laboratory",
+      "reason": "The clinical core is the cardiac catheterization lab environment. The nearest SNOMED CT concept is a Cardiac catheterization laboratory (environment).",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "PTCA, inclusive of diagnostic angiogram",
+      "snomed_code": "11101003",
+      "snomed_name": "Percutaneous transluminal coronary angioplasty",
+      "matched_via": "direct",
+      "generalized_term": null,
+      "reason": "The core procedure is PTCA, mapping to 11101003 (Percutaneous transluminal coronary angioplasty). The included diagnostic coronary angiogram maps separately to 33367005 (Coronary arteriography).",
+      "confidence": "High"
+    },
+    {
+      "entity": "40,600*",
+      "snomed_code": "255560000",
+      "snomed_name": "Monetary amount",
+      "matched_via": "generalized",
+      "generalized_term": "monetary amount / price",
+      "reason": "This is a package price value. There is no clinical SNOMED concept; the nearest representation is 255560000 (Monetary... / amount) as a qualifier for a monetary quantity.",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Systemic Thrombolysis (for MI)",
+      "snomed_code": "426347000",
+      "snomed_name": "Thrombolytic therapy",
+      "matched_via": "direct",
+      "generalized_term": null,
+      "reason": "Systemic thrombolysis maps to 426347000 (Thrombolytic therapy, procedure). The 'for MI' indication maps separately to 22298006 (Myocardial infarction).",
+      "confidence": "High"
+    },
+    {
+      "entity": "for MI",
+      "snomed_code": "22298006",
+      "snomed_name": "Myocardial infarction",
+      "matched_via": "direct",
+      "generalized_term": null,
+      "reason": "'MI' is myocardial infarction, mapping to 22298006 (Myocardial infarction, disorder).",
+      "confidence": "High"
+    },
+    {
+      "entity": "iii",
+      "snomed_code": "260299005",
+      "snomed_name": "Number",
+      "matched_via": "generalized",
+      "generalized_term": "numeral/list marker",
+      "reason": "'iii' is a Roman numeral list marker with no clinical meaning. The nearest SNOMED CT concept is 260299005 (Number, qualifier value).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Coronary artery bypass grafting (CABG)",
+      "snomed_code": "232717009",
+      "snomed_name": "Coronary artery bypass grafting",
+      "matched_via": "direct",
+      "generalized_term": null,
+      "reason": "CABG maps to 232717009 (Coronary artery bypass grafting, procedure). Body site (coronary artery) and the bypass graft procedure are preserved. Clinically equivalent match.",
+      "confidence": "High"
+    },
+    {
+      "entity": "Low Cardiac Output syndrome requiring IABP insertion post",
+      "snomed_code": "48651001",
+      "snomed_name": "Low cardiac output syndrome",
+      "matched_via": "decomposed",
+      "generalized_term": "low cardiac output syndrome",
+      "reason": "The core disorder is low cardiac output syndrome, mapping to 48651001 (Low cardiac output syndrome, disorder). IABP insertion maps separately to 233199001 (Insertion of intra-aortic balloon pump).",
+      "confidence": "High"
+    },
+    {
+      "entity": "3 days",
+      "snomed_code": "258703001",
+      "snomed_name": "Days",
+      "matched_via": "generalized",
+      "generalized_term": "days (duration)",
+      "reason": "'3 days' is a duration value (length of stay). The nearest SNOMED CT concept is 258703001 (day, unit of time).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Upto 5 days",
+      "snomed_code": "258703001",
+      "snomed_name": "Days",
+      "matched_via": "generalized",
+      "generalized_term": "days (duration)",
+      "reason": "Duration value (length of stay). The nearest SNOMED CT concept is 258703001 (day, unit of time).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "5-7 days",
+      "snomed_code": "258703001",
+      "snomed_name": "Days",
+      "matched_via": "generalized",
+      "generalized_term": "days (duration)",
+      "reason": "Duration range (length of stay). The nearest SNOMED CT concept is 258703001 (day, unit of time).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "7-10 days (including Stay for CABG)",
+      "snomed_code": "78717001",
+      "snomed_name": "Length of hospital stay",
+      "matched_via": "generalized",
+      "generalized_term": "length of stay",
+      "reason": "This describes a length-of-stay duration including CABG stay. The nearest SNOMED CT concept is 78717001 (Length of stay).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "including Stay for CABG",
+      "snomed_code": "78717001",
+      "snomed_name": "Length of hospital stay",
+      "matched_via": "generalized",
+      "generalized_term": "length of stay",
+      "reason": "Refers to the hospital stay for CABG. The nearest SNOMED CT concept is 78717001 (Length of stay); CABG itself is 232717009.",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Cardiac Catheterisation lab",
+      "snomed_code": "225728007",
+      "snomed_name": "Cardiac catheterization laboratory",
+      "matched_via": "generalized",
+      "generalized_term": "cardiac catheterization laboratory",
+      "reason": "Maps to the Cardiac catheterization laboratory (environment) concept.",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "CCU/ ICCU",
+      "snomed_code": "309905000",
+      "snomed_name": "Coronary care unit",
+      "matched_via": "generalized",
+      "generalized_term": "coronary care unit",
+      "reason": "CCU/ICCU is the (intensive) coronary care unit. The nearest SNOMED CT concept is 309905000 (Coronary care unit, environment).",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "Qualified cardiologist (DM/ DNB or equivalent in cardiology)",
+      "snomed_code": "17561000",
+      "snomed_name": "Cardiologist",
+      "matched_via": "generalized",
+      "generalized_term": "cardiologist",
+      "reason": "The clinical core is the cardiologist role. The nearest SNOMED CT concept is 17561000 (Cardiologist, occupation).",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "DM/ DNB or equivalent in cardiology",
+      "snomed_code": "394579002",
+      "snomed_name": "Cardiology",
+      "matched_via": "generalized",
+      "generalized_term": "cardiology",
+      "reason": "Refers to a cardiology qualification. The nearest SNOMED CT concept is 394579002 (Cardiology, medical specialty).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Qualified cardiothoracic surgeon (MCh/ DNB/ equivalent in cardiovascular thoracic surgery)",
+      "snomed_code": "45544007",
+      "snomed_name": "Cardiothoracic surgeon",
+      "matched_via": "generalized",
+      "generalized_term": "cardiothoracic surgeon",
+      "reason": "The clinical core is the cardiothoracic surgeon role. The nearest SNOMED CT concept is 45544007 (Cardiothoracic surgeon / thoracic surgeon, occupation).",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "MCh/ DNB/ equivalent in cardiovascular thoracic surgery",
+      "snomed_code": "408461003",
+      "snomed_name": "Cardiothoracic surgery",
+      "matched_via": "generalized",
+      "generalized_term": "cardiothoracic surgery",
+      "reason": "Refers to a cardiothoracic surgery qualification/specialty. The nearest SNOMED CT concept is 408461003 (Cardiothoracic surgery / cardiovascular surgery specialty).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Yes (or MD, medicine)",
+      "snomed_code": "394802001",
+      "snomed_name": "General medicine",
+      "matched_via": "generalized",
+      "generalized_term": "general medicine",
+      "reason": "Refers to the MD (Medicine) qualification/specialty. The nearest SNOMED CT concept is 394802001 (General medicine, specialty).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "or MD, medicine",
+      "snomed_code": "394802001",
+      "snomed_name": "General medicine",
+      "matched_via": "generalized",
+      "generalized_term": "general medicine",
+      "reason": "MD (Medicine) qualification/specialty maps nearest to 394802001 (General medicine, specialty).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Indications",
+      "snomed_code": "410666004",
+      "snomed_name": "Indicated",
+      "matched_via": "generalized",
+      "generalized_term": "indication",
+      "reason": "'Indications' refers to clinical indications for a procedure. The nearest SNOMED CT concept is 410666004 (Indicated, qualifier value).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Bare Metal Stents (Cobalt Chromium platform)",
+      "snomed_code": "705643001",
+      "snomed_name": "Coronary artery stent",
+      "matched_via": "generalized",
+      "generalized_term": "bare metal coronary stent",
+      "reason": "The clinical core is a (bare metal) coronary artery stent. The nearest SNOMED CT concept is 705643001 (Coronary artery stent, physical object). The cobalt-chromium platform is a material detail not separately coded.",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "Cobalt Chromium platform",
+      "snomed_code": "425331005",
+      "snomed_name": "Cobalt chromium alloy",
+      "matched_via": "generalized",
+      "generalized_term": "cobalt chromium alloy",
+      "reason": "Refers to the cobalt-chromium stent material. The nearest SNOMED CT concept is a cobalt chromium alloy (substance).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Drug Eluting Stents (DES)",
+      "snomed_code": "466297004",
+      "snomed_name": "Drug-eluting coronary artery stent",
+      "matched_via": "direct",
+      "generalized_term": null,
+      "reason": "Drug Eluting Stent maps to 466297004 (Drug-eluting coronary artery stent, physical object). Type (drug-eluting) and site (coronary artery) preserved.",
+      "confidence": "High"
+    },
+    {
+      "entity": "Post CABG",
+      "snomed_code": "399261000",
+      "snomed_name": "History of coronary artery bypass grafting",
+      "matched_via": "generalized",
+      "generalized_term": "status post CABG",
+      "reason": "'Post CABG' denotes a status/history following coronary artery bypass grafting. The nearest SNOMED CT concept is 399261000 (History of coronary artery bypass grafting, situation).",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "vii",
+      "snomed_code": "260299005",
+      "snomed_name": "Number",
+      "matched_via": "generalized",
+      "generalized_term": "numeral/list marker",
+      "reason": "Roman numeral list marker with no clinical meaning. Nearest SNOMED CT concept 260299005 (Number, qualifier value).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "viii",
+      "snomed_code": "260299005",
+      "snomed_name": "Number",
+      "matched_via": "generalized",
+      "generalized_term": "numeral/list marker",
+      "reason": "Roman numeral list marker with no clinical meaning. Nearest SNOMED CT concept 260299005 (Number, qualifier value).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Low Cardiac Output syndrome requiring IABP insertion post operatively",
+      "snomed_code": "48651001",
+      "snomed_name": "Low cardiac output syndrome",
+      "matched_via": "decomposed",
+      "generalized_term": "low cardiac output syndrome",
+      "reason": "Core disorder is low cardiac output syndrome (48651001); IABP insertion maps separately to 233199001 (Insertion of intra-aortic balloon pump).",
+      "confidence": "High"
+    },
+    {
+      "entity": "iii. 2D ECHO",
+      "snomed_code": "40701008",
+      "snomed_name": "Echocardiography",
+      "matched_via": "direct",
+      "generalized_term": null,
+      "reason": "2D ECHO is two-dimensional echocardiography, mapping to 40701008 (Echocardiography, procedure). The list marker 'iii.' is ignored.",
+      "confidence": "High"
+    },
+    {
+      "entity": "showing blockage",
+      "snomed_code": "26843008",
+      "snomed_name": "Coronary artery obstruction",
+      "matched_via": "generalized",
+      "generalized_term": "coronary artery obstruction",
+      "reason": "In this coronary-angiography context 'blockage' is a coronary artery obstruction/occlusion. The nearest SNOMED CT concept is 26843008 (Coronary artery obstruction / occlusion, disorder).",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "Troponins T/ I (if not available then CPK-MB",
+      "snomed_code": "105000003",
+      "snomed_name": "Troponin measurement",
+      "matched_via": "decomposed",
+      "generalized_term": "troponin measurement",
+      "reason": "The leading concept is troponin (T/I) measurement, mapping to 105000003 (Troponin measurement / cardiac troponin). CPK-MB maps separately to 166123005 (Creatine kinase MB measurement).",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "Yes (With pic of the site of incision post procedure)",
+      "snomed_code": "718361007",
+      "snomed_name": "Clinical photography",
+      "matched_via": "generalized",
+      "generalized_term": "clinical photograph of incision site",
+      "reason": "The clinical core is a clinical photograph of the incision site. The nearest SNOMED CT concept is 718361007 (Clinical photography, procedure).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "With pic of the site of incision post procedure",
+      "snomed_code": "718361007",
+      "snomed_name": "Clinical photography",
+      "matched_via": "generalized",
+      "generalized_term": "clinical photograph of incision site",
+      "reason": "Clinical photograph of the incision site. Nearest SNOMED CT concept 718361007 (Clinical photography, procedure).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Yes (Post Procedure)",
+      "snomed_code": "262068006",
+      "snomed_name": "Postprocedure",
+      "matched_via": "generalized",
+      "generalized_term": "post-procedure",
+      "reason": "'Post Procedure' is a temporal qualifier. The nearest SNOMED CT concept is 262068006 (Postprocedure, qualifier value).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Post Procedure",
+      "snomed_code": "262068006",
+      "snomed_name": "Postprocedure",
+      "matched_via": "generalized",
+      "generalized_term": "post-procedure",
+      "reason": "Temporal qualifier mapping to 262068006 (Postprocedure, qualifier value).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Yes (serial)",
+      "snomed_code": "255260001",
+      "snomed_name": "Serial",
+      "matched_via": "generalized",
+      "generalized_term": "serial",
+      "reason": "'Serial' is a frequency/pattern qualifier (serial ECGs). The nearest SNOMED CT concept is 255260001 (Serial, qualifier value).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "serial",
+      "snomed_code": "255260001",
+      "snomed_name": "Serial",
+      "matched_via": "generalized",
+      "generalized_term": "serial",
+      "reason": "Frequency/pattern qualifier mapping to 255260001 (Serial, qualifier value).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Bare metal/ Drug eluting stent",
+      "snomed_code": "705643001",
+      "snomed_name": "Coronary artery stent",
+      "matched_via": "generalized",
+      "generalized_term": "coronary artery stent",
+      "reason": "Refers to coronary stents (bare metal or drug eluting). The nearest common SNOMED CT concept is 705643001 (Coronary artery stent, physical object); drug-eluting is 466297004.",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "indoor case papers",
+      "snomed_code": "184216000",
+      "snomed_name": "Patient record type",
+      "matched_via": "generalized",
+      "generalized_term": "patient record",
+      "reason": "In-patient clinical case records. The nearest SNOMED CT concept is 184216000 (Patient record type, record artifact).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Cardiology",
+      "snomed_code": "394579002",
+      "snomed_name": "Cardiology",
+      "matched_via": "direct",
+      "generalized_term": null,
+      "reason": "'Cardiology' maps directly to 394579002 (Cardiology, medical specialty).",
+      "confidence": "High"
+    },
+    {
+      "entity": "cardiovascular thoracic surgery",
+      "snomed_code": "408461003",
+      "snomed_name": "Cardiothoracic surgery",
+      "matched_via": "direct",
+      "generalized_term": null,
+      "reason": "Maps to 408461003 (Cardiothoracic surgery / cardiovascular surgery, specialty).",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "Medicine",
+      "snomed_code": "394802001",
+      "snomed_name": "General medicine",
+      "matched_via": "generalized",
+      "generalized_term": "general medicine",
+      "reason": "'Medicine' as a specialty maps nearest to 394802001 (General medicine, specialty).",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "inclusive of diagnostic angiogram",
+      "snomed_code": "33367005",
+      "snomed_name": "Coronary arteriography",
+      "matched_via": "generalized",
+      "generalized_term": "coronary angiography",
+      "reason": "The clinical core is a diagnostic coronary angiogram. The nearest SNOMED CT concept is 33367005 (Coronary arteriography / coronary angiography, procedure).",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "WORKFLOW",
+      "snomed_code": "224891009",
+      "snomed_name": "Healthcare process",
+      "matched_via": "generalized",
+      "generalized_term": "healthcare process",
+      "reason": "'Workflow' refers to a clinical process. Nearest SNOMED CT concept 224891009 (Healthcare process).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "DHR-ICMR STW",
+      "snomed_code": "371537001",
+      "snomed_name": "Clinical practice guideline",
+      "matched_via": "generalized",
+      "generalized_term": "clinical practice guideline",
+      "reason": "DHR-ICMR Standard Treatment Workflow is a clinical guideline document. Nearest SNOMED CT concept 371537001 (Clinical practice guideline).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "for PTCA/ PCI/ IABP",
+      "snomed_code": "415070008",
+      "snomed_name": "Percutaneous coronary intervention",
+      "matched_via": "decomposed",
+      "generalized_term": "percutaneous coronary intervention",
+      "reason": "The mappable clinical core is PCI (percutaneous coronary intervention), mapping to 415070008 (Percutaneous coronary intervention, procedure). IABP maps separately to 233199001.",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "for CABG",
+      "snomed_code": "232717009",
+      "snomed_name": "Coronary artery bypass grafting",
+      "matched_via": "direct",
+      "generalized_term": null,
+      "reason": "'CABG' maps to 232717009 (Coronary artery bypass grafting, procedure).",
+      "confidence": "High"
+    },
+    {
+      "entity": "ongoing or within 12 hours",
+      "snomed_code": "123029007",
+      "snomed_name": "Duration",
+      "matched_via": "generalized",
+      "generalized_term": "time duration",
+      "reason": "This is a temporal window qualifier. The nearest SNOMED CT concept is 123029007 (Duration, observable/qualifier).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "PTCA/ PCI",
+      "snomed_code": "415070008",
+      "snomed_name": "Percutaneous coronary intervention",
+      "matched_via": "generalized",
+      "generalized_term": "percutaneous coronary intervention",
+      "reason": "PTCA/PCI maps to 415070008 (Percutaneous coronary intervention, procedure); PTCA specifically is 11101003.",
+      "confidence": "High"
+    },
+    {
+      "entity": "within 1 month",
+      "snomed_code": "258706009",
+      "snomed_name": "Month",
+      "matched_via": "generalized",
+      "generalized_term": "month (duration)",
+      "reason": "Temporal window qualifier. The nearest SNOMED CT concept is 258706009 (month, unit of time).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "within 1month",
+      "snomed_code": "258706009",
+      "snomed_name": "Month",
+      "matched_via": "generalized",
+      "generalized_term": "month (duration)",
+      "reason": "Temporal window qualifier. Nearest SNOMED CT concept 258706009 (month, unit of time).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "except menstrual bleed",
+      "snomed_code": "386692008",
+      "snomed_name": "Menstruation",
+      "matched_via": "generalized",
+      "generalized_term": "menstrual bleeding",
+      "reason": "The clinical core is menstrual bleeding. The nearest SNOMED CT concept is 386692008 (Menstruation, finding); Menstrual bleeding is 248955001.",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "Bare-metal/ drug eluting Available",
+      "snomed_code": "705643001",
+      "snomed_name": "Coronary artery stent",
+      "matched_via": "generalized",
+      "generalized_term": "coronary artery stent (bare metal / drug eluting)",
+      "reason": "Refers to availability of bare-metal or drug-eluting coronary stents. The nearest common SNOMED CT concept is 705643001 (Coronary artery stent, physical object); drug-eluting is 466297004.",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "such as DCGI/ FDA/ CE/ ANDA, etc",
+      "snomed_code": "385432009",
+      "snomed_name": "Regulatory authority",
+      "matched_via": "generalized",
+      "generalized_term": "regulatory authority",
+      "reason": "DCGI/FDA/CE/ANDA are regulatory bodies/approvals. There is no precise clinical concept; the nearest available representation is a regulatory authority organisation concept.",
+      "confidence": "Low"
+    },
+    {
+      "entity": "stw.icmr.org.in",
+      "snomed_code": "713311001",
+      "snomed_name": "Universal resource locator",
+      "matched_via": "generalized",
+      "generalized_term": "URL",
+      "reason": "Web URL. Nearest SNOMED CT concept 713311001 (Universal resource locator).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Proceed for PTCA only if diagnosis made is backed by clinical signs",
+      "snomed_code": "439401001",
+      "snomed_name": "Diagnosis",
+      "matched_via": "generalized",
+      "generalized_term": "diagnosis",
+      "reason": "The clinical core is the diagnosis (to be supported by signs). The nearest SNOMED CT concept is 439401001 (Diagnosis).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "symptoms & investigation findings",
+      "snomed_code": "418799008",
+      "snomed_name": "Symptom",
+      "matched_via": "decomposed",
+      "generalized_term": "symptoms and findings",
+      "reason": "The leading concept 'symptoms' maps to 418799008 (Symptom). Investigation findings map generically to 404684003 (Clinical finding).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Look for other causes of chest pain as well (ongoing or within 12 hours)",
+      "snomed_code": "29857009",
+      "snomed_name": "Chest pain",
+      "matched_via": "decomposed",
+      "generalized_term": "chest pain",
+      "reason": "The central clinical concept is chest pain, mapping to 29857009 (Chest pain, finding). The 12-hour window is a temporal qualifier.",
+      "confidence": "High"
+    },
+    {
+      "entity": "Dissection of Aorta",
+      "snomed_code": "308546005",
+      "snomed_name": "Dissection of aorta",
+      "matched_via": "direct",
+      "generalized_term": null,
+      "reason": "Maps to 308546005 (Dissection of aorta / Aortic dissection, disorder). Body site (aorta) and disorder type preserved.",
+      "confidence": "High"
+    },
+    {
+      "entity": "Pleuritis/ pneumonitis/ embolism/ pneumothorax",
+      "snomed_code": "36118008",
+      "snomed_name": "Pleurisy",
+      "matched_via": "decomposed",
+      "generalized_term": "pleurisy",
+      "reason": "A list of differential diagnoses. The leading concept pleuritis maps to 36118008 (Pleurisy). Others: pneumonitis 205237003, pulmonary embolism 59282003, pneumothorax 36118008/36118008... (Pneumothorax 36118008 -> actually 36118008 is pleurisy; pneumothorax is 36118008)/ Pneumothorax 36118008. A representative concept (pleurisy) was chosen; each condition has its own code.",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "pericardial rub",
+      "snomed_code": "60176005",
+      "snomed_name": "Pericardial friction rub",
+      "matched_via": "direct",
+      "generalized_term": null,
+      "reason": "Maps to 60176005 (Pericardial friction rub, finding). Clinically equivalent match.",
+      "confidence": "High"
+    },
+    {
+      "entity": "neuralgia",
+      "snomed_code": "42545007",
+      "snomed_name": "Neuralgia",
+      "matched_via": "direct",
+      "generalized_term": null,
+      "reason": "Maps to 42545007 (Neuralgia, disorder). Clinically equivalent match.",
+      "confidence": "High"
+    },
+    {
+      "entity": "herpes",
+      "snomed_code": "4740000",
+      "snomed_name": "Herpes zoster",
+      "matched_via": "generalized",
+      "generalized_term": "herpes zoster",
+      "reason": "In the chest-pain differential context 'herpes' refers to herpes zoster (shingles). The nearest SNOMED CT concept is 4740000 (Herpes zoster, disorder); generic Herpes simplex is 88594005.",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "Refer the patient to angioplasty (PTCA/ PCI)/ thrombolysis capable hospital",
+      "snomed_code": "306206005",
+      "snomed_name": "Referral to service",
+      "matched_via": "decomposed",
+      "generalized_term": "referral",
+      "reason": "The clinical core is the referral act. The nearest SNOMED CT concept is 306206005 (Referral to service, procedure).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "if required",
+      "snomed_code": "410666004",
+      "snomed_name": "Indicated",
+      "matched_via": "generalized",
+      "generalized_term": "as required",
+      "reason": "'If required' is a conditional/indication qualifier. Nearest SNOMED CT concept 410666004 (Indicated, qualifier value).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Types of Stents used in PTCA/ PCI and their broad indications for use",
+      "snomed_code": "705643001",
+      "snomed_name": "Coronary artery stent",
+      "matched_via": "decomposed",
+      "generalized_term": "coronary artery stent",
+      "reason": "The clinical core is coronary stents. Nearest SNOMED CT concept 705643001 (Coronary artery stent, physical object).",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "Absolute Contraindications for Systemic Thrombolysis",
+      "snomed_code": "410536001",
+      "snomed_name": "Contraindicated",
+      "matched_via": "generalized",
+      "generalized_term": "contraindication",
+      "reason": "The clinical core is contraindication. The nearest SNOMED CT concept is 410536001 (Contraindicated, qualifier value); thrombolysis maps to 426347000.",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Previous intra-cerebral haemorrhage/ stroke of unknown etiology",
+      "snomed_code": "274100004",
+      "snomed_name": "Cerebral hemorrhage",
+      "matched_via": "decomposed",
+      "generalized_term": "intracerebral haemorrhage",
+      "reason": "The leading concept intracerebral haemorrhage maps to 274100004 (Cerebral hemorrhage, disorder). Stroke maps separately to 230690007 (Cerebrovascular accident).",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "Ischemic stroke in last 6 months",
+      "snomed_code": "422504002",
+      "snomed_name": "Ischemic stroke",
+      "matched_via": "direct",
+      "generalized_term": null,
+      "reason": "Ischemic stroke maps to 422504002 (Ischemic stroke, disorder). The '6 months' timing is a qualifier.",
+      "confidence": "High"
+    },
+    {
+      "entity": "CNS neoplasm or AV malformation",
+      "snomed_code": "126952004",
+      "snomed_name": "Neoplasm of central nervous system",
+      "matched_via": "decomposed",
+      "generalized_term": "CNS neoplasm",
+      "reason": "The leading concept CNS neoplasm maps to 126952004 (Neoplasm of central nervous system, disorder). Arteriovenous malformation maps separately to 234140006 (Arteriovenous malformation).",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "Recent (within 1 month) major trauma/ surgery/ head injury",
+      "snomed_code": "82271004",
+      "snomed_name": "Injury of head",
+      "matched_via": "decomposed",
+      "generalized_term": "head injury / major trauma",
+      "reason": "The list covers major trauma/surgery/head injury. A representative concept is 82271004 (Injury of head, disorder); generic Traumatic injury is 417746004.",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "Recent (within 1month) major GI bleed",
+      "snomed_code": "74474003",
+      "snomed_name": "Gastrointestinal hemorrhage",
+      "matched_via": "direct",
+      "generalized_term": null,
+      "reason": "Major GI bleed maps to 74474003 (Gastrointestinal hemorrhage, disorder). The 'recent/1 month' timing is a qualifier.",
+      "confidence": "High"
+    },
+    {
+      "entity": "Known bleeding tendency (except menstrual bleed)",
+      "snomed_code": "64779008",
+      "snomed_name": "Bleeding tendency",
+      "matched_via": "direct",
+      "generalized_term": null,
+      "reason": "'Bleeding tendency' maps to 64779008 (Bleeding tendency / Blood coagulation disorder, disorder). The menstrual-bleed exception is a qualifier.",
+      "confidence": "High"
+    },
+    {
+      "entity": "Severe uncontrolled hypertension",
+      "snomed_code": "56218007",
+      "snomed_name": "Systemic arterial hypertension",
+      "matched_via": "generalized",
+      "generalized_term": "uncontrolled hypertension",
+      "reason": "The clinical core is (severe, uncontrolled) hypertension. The nearest SNOMED CT concept is 56218007 (Systemic arterial hypertension, disorder); severity/control are qualifiers.",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "Aortic Dissection",
+      "snomed_code": "308546005",
+      "snomed_name": "Dissection of aorta",
+      "matched_via": "direct",
+      "generalized_term": null,
+      "reason": "Maps to 308546005 (Dissection of aorta / Aortic dissection, disorder). Clinically equivalent match.",
+      "confidence": "High"
+    },
+    {
+      "entity": "Contraindications for Low Cardiac Output syndrome requiring IABP insertion post – operatively",
+      "snomed_code": "410536001",
+      "snomed_name": "Contraindicated",
+      "matched_via": "generalized",
+      "generalized_term": "contraindication",
+      "reason": "The clinical core is contraindication (to IABP). The nearest SNOMED CT concept is 410536001 (Contraindicated, qualifier value); IABP insertion is 233199001.",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Severe Aortic regurgitation",
+      "snomed_code": "60234000",
+      "snomed_name": "Aortic valve regurgitation",
+      "matched_via": "generalized",
+      "generalized_term": "aortic regurgitation",
+      "reason": "Maps to 60234000 (Aortic valve regurgitation / Aortic incompetence, disorder). 'Severe' is a severity qualifier.",
+      "confidence": "High"
+    },
+    {
+      "entity": "Suspected or known aortic dissection",
+      "snomed_code": "308546005",
+      "snomed_name": "Dissection of aorta",
+      "matched_via": "direct",
+      "generalized_term": null,
+      "reason": "The clinical core is aortic dissection, mapping to 308546005 (Dissection of aorta). 'Suspected or known' is a certainty qualifier.",
+      "confidence": "High"
+    },
+    {
+      "entity": "Severe Aorto-iliac Occlusive disease",
+      "snomed_code": "233985008",
+      "snomed_name": "Aortoiliac occlusive disease",
+      "matched_via": "generalized",
+      "generalized_term": "aortoiliac occlusive disease",
+      "reason": "Maps to 233985008 (Aortoiliac occlusive disease / Aortoiliac atherosclerosis, disorder). 'Severe' is a severity qualifier.",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "4 STANDARD TREATMENT WORKFLOW (DHR-ICMR STW)i- For clinicians/ treating doctor",
+      "snomed_code": "371537001",
+      "snomed_name": "Clinical practice guideline",
+      "matched_via": "generalized",
+      "generalized_term": "standard treatment workflow / guideline",
+      "reason": "The Standard Treatment Workflow is a clinical guideline document. Nearest SNOMED CT concept 371537001 (Clinical practice guideline).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Stable Angina",
+      "snomed_code": "233819005",
+      "snomed_name": "Stable angina",
+      "matched_via": "direct",
+      "generalized_term": null,
+      "reason": "Maps to 233819005 (Stable angina, disorder). Clinically equivalent match.",
+      "confidence": "High"
+    },
+    {
+      "entity": "Consent duly signed by Patient & treating Cardiologist- Yes",
+      "snomed_code": "182762000",
+      "snomed_name": "Consent given",
+      "matched_via": "generalized",
+      "generalized_term": "informed consent",
+      "reason": "The clinical core is patient consent. The nearest SNOMED CT concept is 182762000 (Patient consent given / Consent status, situation).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Stenosis of >/=70% in one or more of the main coronary artery - Yes",
+      "snomed_code": "233817007",
+      "snomed_name": "Coronary artery stenosis",
+      "matched_via": "generalized",
+      "generalized_term": "coronary artery stenosis",
+      "reason": "The clinical core is coronary artery stenosis. The nearest SNOMED CT concept is 233817007 (Coronary artery stenosis, disorder); the ≥70% degree is a qualifying value.",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "Angiogram stills showing stent & post stent flow- Yes",
+      "snomed_code": "33367005",
+      "snomed_name": "Coronary arteriography",
+      "matched_via": "decomposed",
+      "generalized_term": "coronary angiography",
+      "reason": "The clinical core is coronary angiography imaging (showing stent/flow). Nearest SNOMED CT concept 33367005 (Coronary arteriography, procedure).",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "Barcode of All stents (Bare-metal/ drug eluting Available)- Yes",
+      "snomed_code": "705643001",
+      "snomed_name": "Coronary artery stent",
+      "matched_via": "decomposed",
+      "generalized_term": "coronary artery stent",
+      "reason": "The clinical core is the coronary stent(s). Nearest SNOMED CT concept 705643001 (Coronary artery stent, physical object). 'Barcode' is a documentation detail.",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Is Drug Eluting Stent used- Yes",
+      "snomed_code": "466297004",
+      "snomed_name": "Drug-eluting coronary artery stent",
+      "matched_via": "direct",
+      "generalized_term": null,
+      "reason": "Drug Eluting Stent maps to 466297004 (Drug-eluting coronary artery stent, physical object).",
+      "confidence": "High"
+    },
+    {
+      "entity": "reasons for using Drug Eluting stent mentioned- Yes",
+      "snomed_code": "466297004",
+      "snomed_name": "Drug-eluting coronary artery stent",
+      "matched_via": "decomposed",
+      "generalized_term": "drug-eluting stent",
+      "reason": "The clinical core is the drug-eluting stent (466297004). The 'reasons mentioned' part is documentation.",
+      "confidence": "Low"
+    },
+    {
+      "entity": "If Bare metal stent used",
+      "snomed_code": "705643001",
+      "snomed_name": "Coronary artery stent",
+      "matched_via": "generalized",
+      "generalized_term": "bare metal coronary stent",
+      "reason": "Refers to a bare-metal coronary stent. Nearest SNOMED CT concept 705643001 (Coronary artery stent, physical object).",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "etc.)- Yes",
+      "snomed_code": "74964007",
+      "snomed_name": "Other",
+      "matched_via": "generalized",
+      "generalized_term": "other/etcetera",
+      "reason": "'etc.' is a non-specific placeholder. The nearest SNOMED CT concept is 74964007 (Other, qualifier value).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Number of Stents used in </= 3- Yes",
+      "snomed_code": "705643001",
+      "snomed_name": "Coronary artery stent",
+      "matched_via": "decomposed",
+      "generalized_term": "coronary artery stent count",
+      "reason": "The clinical core is the coronary stent (705643001); the count '≤3' is a numeric qualifier.",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Reasons/ Justification if Multiple Stents Used- Yes",
+      "snomed_code": "705643001",
+      "snomed_name": "Coronary artery stent",
+      "matched_via": "decomposed",
+      "generalized_term": "multiple coronary stents",
+      "reason": "The clinical core is multiple coronary stents (705643001). Reasons/justification is documentation.",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Significant ST Elevation in ECG – Yes",
+      "snomed_code": "164865005",
+      "snomed_name": "ECG: ST elevation",
+      "matched_via": "generalized",
+      "generalized_term": "ST elevation on ECG",
+      "reason": "The clinical core is ST elevation on ECG. The nearest SNOMED CT concept is 164865005 (Electrocardiogram: ST elevation, finding).",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "Positive Troponin Test/ Elevated Serial CPK-MB Levels- Yes",
+      "snomed_code": "105000003",
+      "snomed_name": "Troponin measurement",
+      "matched_via": "decomposed",
+      "generalized_term": "raised troponin / CPK-MB",
+      "reason": "The leading concept is troponin (positive) measurement (105000003); elevated CPK-MB maps separately to 166123005 (Creatine kinase MB measurement). Raised troponin finding is 442657007.",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "Absolute contraindications to Systemic Thrombolysis- No",
+      "snomed_code": "410536001",
+      "snomed_name": "Contraindicated",
+      "matched_via": "generalized",
+      "generalized_term": "contraindication",
+      "reason": "The clinical core is contraindication to thrombolysis. Nearest SNOMED CT concept 410536001 (Contraindicated, qualifier value).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Consent duly signed by Patient & Cardiothoracic Surgeon- Yes",
+      "snomed_code": "182762000",
+      "snomed_name": "Consent given",
+      "matched_via": "generalized",
+      "generalized_term": "informed consent",
+      "reason": "The clinical core is patient consent. Nearest SNOMED CT concept 182762000 (Patient consent given, situation).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Stenosis of >/=70% in two or three of the main coronary artery- Yes",
+      "snomed_code": "233817007",
+      "snomed_name": "Coronary artery stenosis",
+      "matched_via": "generalized",
+      "generalized_term": "coronary artery stenosis (multivessel)",
+      "reason": "The clinical core is coronary artery stenosis (multivessel). Nearest SNOMED CT concept 233817007 (Coronary artery stenosis, disorder); the ≥70% and vessel count are qualifiers. Triple vessel disease is 24596005.",
+      "confidence": "Medium"
+    },
+    {
+      "entity": ">50% stenosis in left main coronary artery- Yes",
+      "snomed_code": "233817007",
+      "snomed_name": "Coronary artery stenosis",
+      "matched_via": "generalized",
+      "generalized_term": "left main coronary artery stenosis",
+      "reason": "The clinical core is left main coronary artery stenosis. Nearest SNOMED CT concept 233817007 (Coronary artery stenosis); site (left main) and ≥50% are qualifiers.",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "Documentary evidence revealing that the patient is not amenable to PTCA/ PCI- Yes",
+      "snomed_code": "415070008",
+      "snomed_name": "Percutaneous coronary intervention",
+      "matched_via": "decomposed",
+      "generalized_term": "not amenable to PCI",
+      "reason": "The mappable clinical core is PCI (415070008); the 'not amenable / documentary evidence' framing is a clinical-decision statement without a discrete concept.",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Low Cardiac Output syndrome requiring IABP insertion post – operatively",
+      "snomed_code": "48651001",
+      "snomed_name": "Low cardiac output syndrome",
+      "matched_via": "decomposed",
+      "generalized_term": "low cardiac output syndrome",
+      "reason": "Core disorder low cardiac output syndrome (48651001); IABP insertion is 233199001.",
+      "confidence": "High"
+    },
+    {
+      "entity": "Patient has a recent history of CABG- Yes",
+      "snomed_code": "399261000",
+      "snomed_name": "History of coronary artery bypass grafting",
+      "matched_via": "direct",
+      "generalized_term": null,
+      "reason": "'Recent history of CABG' maps to 399261000 (History of coronary artery bypass grafting, situation).",
+      "confidence": "High"
+    },
+    {
+      "entity": "Patient developed deterioration in Cardiovascular Status Post CABG- Yes",
+      "snomed_code": "67362008",
+      "snomed_name": "Deterioration of cardiovascular status",
+      "matched_via": "generalized",
+      "generalized_term": "cardiovascular deterioration",
+      "reason": "The clinical core is deterioration of cardiovascular status. The nearest SNOMED CT representation is a cardiovascular deterioration/finding; generic 'Deteriorated' is 260372006 and cardiac disorder 49601007.",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Used as an add on package to CABG- Yes",
+      "snomed_code": "232717009",
+      "snomed_name": "Coronary artery bypass grafting",
+      "matched_via": "decomposed",
+      "generalized_term": "CABG",
+      "reason": "The mappable clinical core is CABG (232717009). 'Add on package' is administrative.",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Do the clinical notes justify poor hemodynamics and high usage of inotropic agentsYes",
+      "snomed_code": "373254001",
+      "snomed_name": "Inotropic agent",
+      "matched_via": "decomposed",
+      "generalized_term": "inotropic agent / poor hemodynamics",
+      "reason": "The mappable clinical cores are inotropic agents (373254001, Positive inotropic agent, substance) and poor hemodynamics (Hemodynamically unstable 371820004). A representative concept (inotropic agent) was chosen.",
+      "confidence": "Low"
+    },
+    {
+      "entity": "(iii) Suvarna Arogya Suraksha Trust (SAST)",
+      "snomed_code": "43741000",
+      "snomed_name": "Site of care",
+      "matched_via": "generalized",
+      "generalized_term": "health scheme organisation",
+      "reason": "SAST is a government health-scheme trust (organisation). There is no precise clinical concept; the nearest available representation is an organisation/site-of-care concept.",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Government of Karnataka",
+      "snomed_code": "385437003",
+      "snomed_name": "Government",
+      "matched_via": "generalized",
+      "generalized_term": "government organisation",
+      "reason": "A government body. The nearest SNOMED CT concept is a government organisation concept (Government / governmental organisation).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "(iv) Cardiac and Cardiothoracic Surgery guidelines",
+      "snomed_code": "371537001",
+      "snomed_name": "Clinical practice guideline",
+      "matched_via": "generalized",
+      "generalized_term": "clinical practice guideline",
+      "reason": "Refers to a clinical guideline document. Nearest SNOMED CT concept 371537001 (Clinical practice guideline).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "Government of Maharashtra",
+      "snomed_code": "385437003",
+      "snomed_name": "Government",
+      "matched_via": "generalized",
+      "generalized_term": "government organisation",
+      "reason": "A government body. Nearest SNOMED CT concept is a government organisation concept.",
+      "confidence": "Low"
+    },
+    {
+      "entity": "//www.hopkinsmedicine.org/health/treatment-tests-and-therapies/intra-aortic-balloon-pump-therapy",
+      "snomed_code": "713311001",
+      "snomed_name": "Universal resource locator",
+      "matched_via": "generalized",
+      "generalized_term": "URL",
+      "reason": "Web URL. Nearest SNOMED CT concept 713311001 (Universal resource locator).",
+      "confidence": "Low"
+    },
+    {
+      "entity": "nary artery bypass grafting",
+      "snomed_code": "232717009",
+      "snomed_name": "Coronary artery bypass grafting",
+      "matched_via": "generalized",
+      "generalized_term": "coronary artery bypass grafting",
+      "reason": "Truncated text for 'coronary artery bypass grafting', mapping to 232717009 (CABG, procedure).",
+      "confidence": "Medium"
+    },
+    {
+      "entity": "ST elevation Myocardial Infarction",
+      "snomed_code": "401303003",
+      "snomed_name": "Acute ST segment elevation myocardial infarction",
+      "matched_via": "direct",
+      "generalized_term": null,
+      "reason": "STEMI maps to 401303003 (Acute ST segment elevation myocardial infarction, disorder). Clinically equivalent match.",
+      "confidence": "High"
+    },
+    {
+      "entity": "Coronary artery bypass grafting",
+      "snomed_code": "232717009",
+      "snomed_name": "Coronary artery bypass grafting",
+      "matched_via": "direct",
+      "generalized_term": null,
+      "reason": "Maps to 232717009 (Coronary artery bypass grafting, procedure). Clinically equivalent match.",
+      "confidence": "High"
+    },
+    {
+      "entity": "Recent major GI bleed",
+      "snomed_code": "74474003",
+      "snomed_name": "Gastrointestinal hemorrhage",
+      "matched_via": "direct",
+      "generalized_term": null,
+      "reason": "Major GI bleed maps to 74474003 (Gastrointestinal hemorrhage, disorder). 'Recent' is a temporal qualifier.",
+      "confidence": "High"
+    },
+    {
+      "entity": "Coronary Artery Bypass Grafting (Coronary artery bypass grafting)",
+      "snomed_code": "232717009",
+      "snomed_name": "Coronary artery bypass grafting",
+      "matched_via": "direct",
+      "generalized_term": null,
+      "reason": "Maps to 232717009 (Coronary artery bypass grafting, procedure). Clinically equivalent match.",
+      "confidence": "High"
+    },
+    {
+      "entity": "(iii) Suvarna Arogya Suraksha Trust",
+      "snomed_code": "43741000",
+      "snomed_name": "Site of care",
+      "matched_via": "generalized",
+      "generalized_term": "health scheme organisation",
+      "reason": "SAST is a government health-scheme trust (organisation). Nearest available representation is an organisation/site-of-care concept.",
+      "confidence": "Low"
+    }
+  ]
+}

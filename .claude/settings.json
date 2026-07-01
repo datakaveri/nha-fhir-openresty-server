@@ -1,5 +1,14 @@
 {
   "permissions": {
+    "allow": [
+      "Bash(python3 -c ' *)",
+      "Bash(chmod +x /home/amarthya/IUDX/NHA/FHIR/upload_output_2.sh)",
+      "Bash(./upload_output_2.sh)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\('MC011A total:', d.get\\('total'\\)\\)\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\('MG029A total:', d.get\\('total'\\)\\)\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\('SU007A total:', d.get\\('total'\\)\\)\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\('total:', d.get\\('total'\\)\\); print\\('sample:', d.get\\('patients',[]\\)[:1]\\)\")"
+    ],
     "additionalDirectories": [
       "/home/amarthya/IUDX/NHA/ui-dx/apps/NHA/src/app/catalogue/fhir/detail"
     ]

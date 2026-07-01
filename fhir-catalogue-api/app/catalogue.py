@@ -94,6 +94,65 @@ _RAW: dict[str, dict] = {
             {"code": "266474003", "display": "Choledocholithiasis"},
         ],
     },
+    "MC011A": {
+        "label": "PTCA / Coronary Angioplasty",
+        "description": (
+            "AB-PMJAY package covering percutaneous transluminal coronary angioplasty "
+            "(inclusive of diagnostic angiogram), systemic thrombolysis, coronary artery "
+            "bypass grafting, and low cardiac output syndrome requiring IABP insertion. "
+            "Specialty: Cardiology / Cardiothoracic Vascular Surgery."
+        ),
+        "procedure": "Percutaneous transluminal coronary angioplasty",
+        "procedure_snomed_code": "11101003",
+        "pre_auth_ref": "PA-MC011A",
+        "bundle_count": 125,
+        "stg_file": "PTCA_MC011A.json",
+        "snomed_codes": [
+            {"code": "48651001",  "display": "Low cardiac output syndrome"},
+            {"code": "401303003", "display": "Acute ST segment elevation myocardial infarction"},
+            {"code": "233819005", "display": "Stable angina"},
+            {"code": "29857009",  "display": "Chest pain"},
+            {"code": "22298006",  "display": "Myocardial infarction"},
+        ],
+    },
+    "MG029A": {
+        "label": "COPD Management",
+        "description": (
+            "AB-PMJAY package covering management of chronic obstructive pulmonary disease "
+            "exacerbations requiring continuous positive airway pressure ventilation support."
+        ),
+        "procedure": "Continuous positive airway pressure ventilation treatment",
+        "procedure_snomed_code": "182615004",
+        "pre_auth_ref": "PA-MG029A",
+        "bundle_count": 125,
+        "stg_file": None,
+        "snomed_codes": [
+            {"code": "13645005",  "display": "Chronic obstructive lung disease"},
+            {"code": "248594006", "display": "Excessive sputum"},
+            {"code": "79688008",  "display": "Respiratory obstruction"},
+            {"code": "195951007", "display": "Acute exacerbation of chronic obstructive airways disease"},
+            {"code": "267036007", "display": "Dyspnea"},
+        ],
+    },
+    "SU007A": {
+        "label": "Percutaneous Nephrolithotomy",
+        "description": (
+            "AB-PMJAY package covering percutaneous nephrolithotomy (PCNL) for renal stone "
+            "disease and related urological conditions."
+        ),
+        "procedure": "Percutaneous nephrolithotomy",
+        "procedure_snomed_code": "70871006",
+        "pre_auth_ref": "PA-SU007A",
+        "bundle_count": 125,
+        "stg_file": None,
+        "snomed_codes": [
+            {"code": "16932000",  "display": "Nausea and vomiting"},
+            {"code": "247355005", "display": "Flank pain"},
+            {"code": "386103008", "display": "Renal stone"},
+            {"code": "274256007", "display": "Renal colic"},
+            {"code": "34436003",  "display": "Hematuria"},
+        ],
+    },
 }
 
 
