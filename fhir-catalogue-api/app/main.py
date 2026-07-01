@@ -237,7 +237,7 @@ async def query_patients(
         )
 
     display = get_snomed_display(package, snomed_code) or snomed_code
-    total, patients = await fhir.get_patients(package.upper(), snomed_code)
+    total, patients, raw = await fhir.get_patients(package.upper(), snomed_code)
 
     return PatientQueryResult(
         package=package.upper(),
@@ -245,6 +245,7 @@ async def query_patients(
         snomed_display=display,
         total=total,
         patients=patients,
+        raw=raw,
     )
 
 
@@ -284,7 +285,7 @@ async def query_patients_multi(
             detail=f"None of the submitted SNOMED codes belong to package '{body.package}'",
         )
 
-    total, patients = await fhir.get_patients_multi(body.package.upper(), valid_codes)
+    total, patients, raw = await fhir.get_patients_multi(body.package.upper(), valid_codes)
 
     return PatientMultiQueryResult(
         package=body.package.upper(),
@@ -292,4 +293,5 @@ async def query_patients_multi(
         invalid_codes=invalid_codes,
         total=total,
         patients=patients,
+        raw=raw,
     )

@@ -42,6 +42,10 @@ class PatientQueryResult(BaseModel):
     snomed_display: str = Field(..., description="Display name of the SNOMED code", example="Typhoid fever")
     total: int = Field(..., description="Total number of matching patient records")
     patients: list[PatientRecord]
+    raw: dict = Field(
+        ...,
+        description="Raw, unmodified FHIR Bundle containing every Condition and Patient resource backing this result",
+    )
 
 
 class PatientMultiQuery(BaseModel):
@@ -64,6 +68,10 @@ class PatientMultiQueryResult(BaseModel):
     )
     total: int = Field(..., description="Total number of matching patient records across all codes")
     patients: list[PatientRecord]
+    raw: dict = Field(
+        ...,
+        description="Raw, unmodified FHIR Bundle containing every Condition and Patient resource backing this result",
+    )
 
 
 class HealthResponse(BaseModel):

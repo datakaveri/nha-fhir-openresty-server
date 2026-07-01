@@ -134,9 +134,9 @@ class FHIRClient:
     # Patient data for a package + single SNOMED code
     # ------------------------------------------------------------------
 
-    async def get_patients(self, package_code: str, snomed_code: str) -> tuple[int, list[dict]]:
+    async def get_patients(self, package_code: str, snomed_code: str) -> tuple[int, list[dict], dict]:
         """
-        Returns (total, list_of_patient_records).
+        Returns (total, list_of_patient_records, raw_bundle).
 
         Two-step:
           1. Resolve patient IDs for the package via Coverage.
@@ -145,7 +145,7 @@ class FHIRClient:
         """
         patient_ids = await self.get_patient_ids_for_package(package_code)
         if not patient_ids:
-            return 0, []
+            return 0, [], _empty_bundle()
 
         subjects = ",".join(f"Patient/{pid}" for pid in patient_ids)
         code_param = f"{SNOMED_SYSTEM}|{snomed_code}"
@@ -184,15 +184,15 @@ class FHIRClient:
 
         records = [_shape_record(cond, patients_by_id) for cond in conditions]
         records = [r for r in records if r]  # drop any that failed to shape
-        return len(records), records
+        return len(records), records, _build_bundle(conditions, patients_by_id)
 
     # ------------------------------------------------------------------
     # Patient data for a package + multiple SNOMED codes (OR logic)
     # ------------------------------------------------------------------
 
-    async def get_patients_multi(self, package_code: str, snomed_codes: list[str]) -> tuple[int, list[dict]]:
+    async def get_patients_multi(self, package_code: str, snomed_codes: list[str]) -> tuple[int, list[dict], dict]:
         """
-        Returns (total, list_of_patient_records) for any patient whose
+        Returns (total, list_of_patient_records, raw_bundle) for any patient whose
         condition matches ANY of the supplied SNOMED codes.
 
         FHIR represents OR as comma-separated values within one code parameter:
@@ -201,7 +201,7 @@ class FHIRClient:
         """
         patient_ids = await self.get_patient_ids_for_package(package_code)
         if not patient_ids:
-            return 0, []
+            return 0, [], _empty_bundle()
 
         subjects = ",".join(f"Patient/{pid}" for pid in patient_ids)
         # FHIR OR: comma-separated token values in one parameter
@@ -241,7 +241,7 @@ class FHIRClient:
 
         records = [_shape_record(cond, patients_by_id) for cond in conditions]
         records = [r for r in records if r]
-        return len(records), records
+        return len(records), records, _build_bundle(conditions, patients_by_id)
 
 
 # ------------------------------------------------------------------
@@ -279,6 +279,21 @@ def _shape_record(condition: dict, patients: dict[str, dict]) -> dict | None:
         "condition_code": coding.get("code", ""),
         "condition_display": coding.get("display", ""),
         "condition_status": status,
+    }
+
+
+def _empty_bundle() -> dict:
+    return {"resourceType": "Bundle", "type": "searchset", "total": 0, "entry": []}
+
+
+def _build_bundle(conditions: list[dict], patients: dict[str, dict]) -> dict:
+    entries = [{"resource": cond} for cond in conditions]
+    entries += [{"resource": patient} for patient in patients.values()]
+    return {
+        "resourceType": "Bundle",
+        "type": "searchset",
+        "total": len(entries),
+        "entry": entries,
     }
 
 

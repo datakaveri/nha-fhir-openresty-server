@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "additionalDirectories": [
+      "/home/amarthya/IUDX/NHA/ui-dx/apps/NHA/src/app/catalogue/fhir/detail"
+    ]
+  }
+}
