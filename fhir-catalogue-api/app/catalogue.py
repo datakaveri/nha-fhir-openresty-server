@@ -1,156 +1,43 @@
 """
 Static catalogue built at startup.
 
-SNOMED codes are curated from the snomed_mapped STG files — only conditions
-that are clinically appropriate as FHIR Condition.code values are included
-(diseases, disorders, findings). Procedures, anatomy, lab tests, and
-administrative artefacts from the STG files are excluded.
-
-The curated set aligns exactly with the variance pools used in
-generate_varianced_bundles.py, so every listed code has real patient data
-in FHIR to back it.
+Single package covering the whole nha_data upload: real AB-PMJAY claim
+bundles no longer tag a Health Benefit Package on Coverage.class (that field
+now carries a generic PMJAY plan code, same for every patient) or fall into
+the old curated 7-package/STG-file model. Rather than guess at fake package
+boundaries, everything currently in FHIR is exposed under one package, and
+the SNOMED list below is the real, distinct set of Condition.code SNOMED
+codes found across all 10 uploaded death-case bundles (verified against
+nha_data on 2026-08-05).
 """
 
 from __future__ import annotations
 
 _RAW: dict[str, dict] = {
-    "MG006A": {
-        "label": "Enteric Fever",
+    "PMJAY": {
+        "label": "AB-PMJAY Claims",
         "description": (
-            "AB-PMJAY package covering management of enteric fever (typhoid) and related "
-            "febrile illnesses. Treatment includes antibiotic therapy per NHA STG guidelines."
+            "All AB-PMJAY claim bundles currently loaded in FHIR. Package-level "
+            "scoping (Coverage.class) isn't present in this data, so every "
+            "uploaded patient falls under this single catalogue entry."
         ),
-        "procedure": "Antibiotic therapy",
-        "procedure_snomed_code": "281789004",
-        "pre_auth_ref": "PA-MG006A",
-        "bundle_count": 125,
-        "stg_file": "PS1_STG2.json",
+        "procedure": "N/A",
+        "procedure_snomed_code": "N/A",
+        "pre_auth_ref": "N/A",
+        "bundle_count": 10,
         "snomed_codes": [
-            {"code": "4834000",   "display": "Typhoid fever"},
-            {"code": "302231008", "display": "Salmonella infection"},
-            {"code": "7520000",   "display": "Pyrexia of unknown origin"},
-            {"code": "416113008", "display": "Acute febrile illness"},
-            {"code": "772154007", "display": "Suspected typhoid fever"},
-        ],
-    },
-    "MG064A": {
-        "label": "Blood Transfusion",
-        "description": (
-            "AB-PMJAY package covering blood transfusion procedures for haematological "
-            "conditions including anaemia, haemolysis, and related disorders."
-        ),
-        "procedure": "Transfusion of blood product",
-        "procedure_snomed_code": "116859006",
-        "pre_auth_ref": "PA-MG064A",
-        "bundle_count": 125,
-        "stg_file": "PS1_STG3.json",
-        "snomed_codes": [
-            {"code": "271737000", "display": "Anemia"},
-            {"code": "73320003",  "display": "Hemolysis"},
-            {"code": "68600005",  "display": "Hemoglobinuria"},
-            {"code": "36760000",  "display": "Hepatosplenomegaly"},
-            {"code": "34436003",  "display": "Hematuria"},
-            {"code": "414663001", "display": "Melena"},
-        ],
-    },
-    "SB039A": {
-        "label": "Total Knee Replacement",
-        "description": (
-            "AB-PMJAY package covering total knee replacement surgery for end-stage knee "
-            "conditions including osteoarthritis, osteonecrosis, and joint instability."
-        ),
-        "procedure": "Total replacement of knee joint",
-        "procedure_snomed_code": "179344006",
-        "pre_auth_ref": "PA-SB039A",
-        "bundle_count": 125,
-        "stg_file": "PS1_STG4.json",
-        "snomed_codes": [
-            {"code": "239873007", "display": "Osteoarthritis of knee"},
-            {"code": "239862000", "display": "Primary osteoarthritis"},
-            {"code": "30989003",  "display": "Knee pain"},
-            {"code": "34686004",  "display": "Osteonecrosis"},
-            {"code": "239821006", "display": "Secondary arthritis"},
-            {"code": "67374007",  "display": "Joint instability"},
-            {"code": "274665008", "display": "Chronic intractable pain"},
-        ],
-    },
-    "SG039C": {
-        "label": "Cholecystectomy",
-        "description": (
-            "AB-PMJAY package covering laparoscopic and open cholecystectomy for gallbladder "
-            "conditions including cholelithiasis, cholecystitis, and biliary colic."
-        ),
-        "procedure": "Cholecystectomy",
-        "procedure_snomed_code": "174041007",
-        "pre_auth_ref": "PA-SG039C",
-        "bundle_count": 125,
-        "stg_file": "PS1_STG1.json",
-        "snomed_codes": [
-            {"code": "235856003", "display": "Cholelithiasis"},
-            {"code": "37389005",  "display": "Biliary colic"},
-            {"code": "65275009",  "display": "Acute cholecystitis"},
-            {"code": "197456007", "display": "Acute pancreatitis"},
-            {"code": "82403002",  "display": "Cholangitis"},
-            {"code": "266474003", "display": "Choledocholithiasis"},
-        ],
-    },
-    "MC011A": {
-        "label": "PTCA / Coronary Angioplasty",
-        "description": (
-            "AB-PMJAY package covering percutaneous transluminal coronary angioplasty "
-            "(inclusive of diagnostic angiogram), systemic thrombolysis, coronary artery "
-            "bypass grafting, and low cardiac output syndrome requiring IABP insertion. "
-            "Specialty: Cardiology / Cardiothoracic Vascular Surgery."
-        ),
-        "procedure": "Percutaneous transluminal coronary angioplasty",
-        "procedure_snomed_code": "11101003",
-        "pre_auth_ref": "PA-MC011A",
-        "bundle_count": 125,
-        "stg_file": "PTCA_MC011A.json",
-        "snomed_codes": [
-            {"code": "48651001",  "display": "Low cardiac output syndrome"},
-            {"code": "401303003", "display": "Acute ST segment elevation myocardial infarction"},
-            {"code": "233819005", "display": "Stable angina"},
-            {"code": "29857009",  "display": "Chest pain"},
-            {"code": "22298006",  "display": "Myocardial infarction"},
-        ],
-    },
-    "MG029A": {
-        "label": "COPD Management",
-        "description": (
-            "AB-PMJAY package covering management of chronic obstructive pulmonary disease "
-            "exacerbations requiring continuous positive airway pressure ventilation support."
-        ),
-        "procedure": "Continuous positive airway pressure ventilation treatment",
-        "procedure_snomed_code": "182615004",
-        "pre_auth_ref": "PA-MG029A",
-        "bundle_count": 125,
-        "stg_file": None,
-        "snomed_codes": [
-            {"code": "13645005",  "display": "Chronic obstructive lung disease"},
-            {"code": "248594006", "display": "Excessive sputum"},
-            {"code": "79688008",  "display": "Respiratory obstruction"},
-            {"code": "195951007", "display": "Acute exacerbation of chronic obstructive airways disease"},
-            {"code": "267036007", "display": "Dyspnea"},
-        ],
-    },
-    "SU007A": {
-        "label": "Percutaneous Nephrolithotomy",
-        "description": (
-            "AB-PMJAY package covering percutaneous nephrolithotomy (PCNL) for renal stone "
-            "disease and related urological conditions."
-        ),
-        "procedure": "Percutaneous nephrolithotomy",
-        "procedure_snomed_code": "70871006",
-        "pre_auth_ref": "PA-SU007A",
-        "bundle_count": 125,
-        "stg_file": None,
-        "snomed_codes": [
-            {"code": "16932000",  "display": "Nausea and vomiting"},
-            {"code": "247355005", "display": "Flank pain"},
-            {"code": "386103008", "display": "Renal stone"},
-            {"code": "274256007", "display": "Renal colic"},
-            {"code": "34436003",  "display": "Hematuria"},
+            {"code": "127295002", "display": "Traumatic brain injury"},
+            {"code": "22253000",  "display": "Pain"},
+            {"code": "230690007", "display": "Cerebrovascular accident"},
+            {"code": "389026000", "display": "Ascites"},
+            {"code": "409089005", "display": "Febrile neutropenia"},
+            {"code": "414027002", "display": "Disorder of hematopoietic structure"},
+            {"code": "42343007",  "display": "Congestive heart failure"},
+            {"code": "5913000",   "display": "Fracture of neck of femur"},
+            {"code": "76571007",  "display": "Septic shock"},
+            {"code": "8666004",   "display": "Supernumerary teeth"},
+            {"code": "91302008",  "display": "Sepsis"},
+            {"code": "91637004",  "display": "Myasthenia gravis"},
         ],
     },
 }

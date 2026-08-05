@@ -37,6 +37,7 @@ RESOURCE_TYPES = [
     "Patient",
     "Practitioner",
     "Organization",
+    "DocumentReference",
 ]
 
 

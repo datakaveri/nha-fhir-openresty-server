@@ -67,32 +67,44 @@ class FHIRClient:
     # ------------------------------------------------------------------
 
     async def get_patient_ids_for_package(self, package_code: str) -> list[str]:
-        cache_key = f"patient_ids:{package_code}"
+        """
+        Resolves patient IDs for a package.
+
+        There's a single catalogue package now (see app/catalogue.py) covering
+        every patient currently in FHIR — Coverage.class no longer carries a
+        package code (it's a generic PMJAY plan code, identical for everyone
+        in this dataset), and there's no other reliable per-package boundary
+        to scope by. `package_code` is accepted for interface compatibility
+        with the rest of the client but not used to filter.
+        """
+        cache_key = "patient_ids:all"
         cached = self._cache.get(cache_key)
         if cached is not None:
             return cached
 
         ids: list[str] = []
-        url = f"/Coverage?class-value={package_code}&_elements=subscriber&_count=500"
+        url_or_params: str | dict = {"_elements": "id", "_count": 500}
         error_occurred = False
 
-        while url:
+        while url_or_params:
             try:
-                r = await self._client.get(url)
+                if isinstance(url_or_params, dict):
+                    r = await self._client.get("/Patient", params=url_or_params)
+                else:
+                    r = await self._client.get(url_or_params)
                 r.raise_for_status()
             except httpx.HTTPError as exc:
-                logger.warning("FHIR Coverage query failed: %s", exc)
+                logger.warning("FHIR Patient query failed: %s", exc)
                 error_occurred = True
                 break
 
             bundle = r.json()
             for entry in bundle.get("entry", []):
-                ref = entry.get("resource", {}).get("subscriber", {}).get("reference", "")
-                # ref looks like "Patient/<uuid>"
-                if ref.startswith("Patient/"):
-                    ids.append(ref.split("/", 1)[1])
+                pid = entry.get("resource", {}).get("id")
+                if pid:
+                    ids.append(pid)
 
-            url = _next_link(bundle)
+            url_or_params = _next_link(bundle)
 
         if not error_occurred:
             self._cache.set(cache_key, ids)
@@ -305,4 +317,6 @@ def _extract_name(patient: dict) -> str:
         parts = [p for p in [prefix, given, family] if p]
         if parts:
             return " ".join(parts)
+        if name_entry.get("text"):
+            return name_entry["text"]
     return ""
