@@ -255,6 +255,41 @@ class FHIRClient:
         records = [r for r in records if r]
         return len(records), records, _build_bundle(conditions, patients_by_id)
 
+    # ------------------------------------------------------------------
+    # Arbitrary pre-built FHIR search query (ABAC-approved queries)
+    # ------------------------------------------------------------------
+
+    async def execute_query(self, query: str) -> tuple[int, dict]:
+        """
+        Executes a pre-built, relative FHIR R4 search query string (e.g.
+        "Patient?_has:Condition:patient:code=...") against the upstream FHIR
+        server and returns (status_code, body) verbatim. Performs no
+        authorization itself — the caller (omop-auth's ABAC gate) is expected
+        to have already verified the requester holds an approved grant for
+        this exact query before calling here.
+        """
+        try:
+            r = await self._client.get(query)
+        except httpx.HTTPError as exc:
+            logger.warning("FHIR query execution failed: %s", exc)
+            return 502, {
+                "resourceType": "OperationOutcome",
+                "issue": [{"severity": "error", "code": "transient", "diagnostics": str(exc)}],
+            }
+
+        try:
+            body = r.json()
+        except ValueError:
+            body = {
+                "resourceType": "OperationOutcome",
+                "issue": [{
+                    "severity": "error",
+                    "code": "invalid",
+                    "diagnostics": "Upstream FHIR server returned a non-JSON response",
+                }],
+            }
+        return r.status_code, body
+
 
 # ------------------------------------------------------------------
 # Helpers

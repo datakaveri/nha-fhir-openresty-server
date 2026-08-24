@@ -82,3 +82,20 @@ class HealthResponse(BaseModel):
 
 class ErrorResponse(BaseModel):
     detail: str = Field(..., description="Error message", example="Package 'XY001A' not found in catalogue")
+
+
+class FHIRQueryExecuteRequest(BaseModel):
+    resource_type: str = Field(
+        ...,
+        description="FHIR resource type the query targets — the query string must start with this type.",
+        example="Patient",
+    )
+    query: str = Field(
+        ...,
+        description=(
+            "Full FHIR R4 search query string (relative, no leading slash), e.g. "
+            "'Patient?_has:Condition:patient:code=http://snomed.info/sct|44054006&birthdate=ge1966-01-01' "
+            "or a 'Patient?_filter=...' expression."
+        ),
+        example="Patient?_has:Condition:patient:code=http://snomed.info/sct|44054006&birthdate=ge1966-01-01",
+    )

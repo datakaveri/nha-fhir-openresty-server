@@ -10,6 +10,7 @@ Usage:
   e.g.  python3 upload_nha_data.py http://localhost:8080/fhir nha_data
 """
 
+import os
 import sys
 import json
 import glob
@@ -20,7 +21,7 @@ from requests.auth import HTTPBasicAuth
 
 FHIR_BASE = (sys.argv[1].rstrip("/") if len(sys.argv) > 1 else "http://localhost:8080/fhir")
 DATA_DIR = sys.argv[2] if len(sys.argv) > 2 else str(Path(__file__).parent / "nha_data")
-AUTH = HTTPBasicAuth("admin", "password")
+AUTH = HTTPBasicAuth(os.environ.get("FHIR_USERNAME", "admin"), os.environ.get("FHIR_PASSWORD", "password"))
 HEADERS = {
     "Content-Type": "application/fhir+json",
     "Accept": "application/fhir+json",

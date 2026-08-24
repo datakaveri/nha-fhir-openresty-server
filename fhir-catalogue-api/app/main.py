@@ -2,6 +2,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import Depends, FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
 from .catalogue import (
     get_all_packages,
@@ -14,6 +15,7 @@ from .config import Settings, get_settings
 from .fhir import FHIRClient
 from .models import (
     ErrorResponse,
+    FHIRQueryExecuteRequest,
     HealthResponse,
     Package,
     PackageDetail,
@@ -22,6 +24,39 @@ from .models import (
     PatientQueryResult,
     SnomedCode,
 )
+
+# FHIR resource types the generic query executor is allowed to target.
+# Defense-in-depth only — the real authorization gate is the ABAC approval
+# flow in omop-auth, which decides which query strings ever reach here.
+ALLOWED_QUERY_RESOURCE_TYPES = {
+    "Patient",
+    "Condition",
+    "Observation",
+    "Encounter",
+    "MedicationRequest",
+    "Procedure",
+    "DiagnosticReport",
+    "AllergyIntolerance",
+    "Immunization",
+    "CarePlan",
+    "Coverage",
+    "Claim",
+}
+
+
+def _validate_execute_query(resource_type: str, query: str) -> None:
+    if resource_type not in ALLOWED_QUERY_RESOURCE_TYPES:
+        raise HTTPException(status_code=400, detail=f"Unsupported resource_type '{resource_type}'")
+    if query.startswith("/") or query.startswith("http://") or query.startswith("https://"):
+        raise HTTPException(
+            status_code=400,
+            detail="query must be a relative FHIR search query string, not an absolute URL or path",
+        )
+    if not (query == resource_type or query.startswith(f"{resource_type}?")):
+        raise HTTPException(
+            status_code=400,
+            detail=f"query must target resource type '{resource_type}' (expected it to start with '{resource_type}?')",
+        )
 
 # ---------------------------------------------------------------------------
 # FHIR client lifecycle
@@ -70,6 +105,14 @@ tags_metadata = [
         "description": (
             "Query live patient records from HAPI FHIR. "
             "Filter by package and SNOMED condition code to retrieve matching patient demographics and condition details."
+        ),
+    },
+    {
+        "name": "queries",
+        "description": (
+            "Execute pre-built FHIR R4 search queries (e.g. ones produced by a "
+            "text-to-query pipeline and approved via omop-auth's ABAC flow) "
+            "directly against HAPI FHIR."
         ),
     },
     {
@@ -247,6 +290,31 @@ async def query_patients(
         patients=patients,
         raw=raw,
     )
+
+
+@app.post(
+    "/fhir/queries/execute",
+    tags=["queries"],
+    summary="Execute a pre-built FHIR R4 search query",
+    description=(
+        "Runs an arbitrary, already-built FHIR R4 search query string against the "
+        "upstream HAPI FHIR server and returns the resulting Bundle (or "
+        "OperationOutcome on failure) verbatim, with the upstream status code "
+        "passed through unchanged. \n\n"
+        "**No authorization is performed here.** Callers are expected to have "
+        "already verified the requester holds an approved grant for this exact "
+        "query — in this platform that check happens in omop-auth's FHIR-query "
+        "ABAC flow before it ever calls this endpoint."
+    ),
+    responses={400: {"model": ErrorResponse, "description": "Malformed or disallowed query"}},
+)
+async def execute_fhir_query(
+    body: FHIRQueryExecuteRequest,
+    fhir: FHIRClient = Depends(get_fhir_client),
+):
+    _validate_execute_query(body.resource_type, body.query)
+    status_code, result = await fhir.execute_query(body.query)
+    return JSONResponse(status_code=status_code, content=result)
 
 
 @app.post(

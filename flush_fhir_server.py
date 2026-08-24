@@ -12,6 +12,7 @@ Usage:
   e.g.  python3 flush_fhir_server.py http://localhost:8080/fhir
 """
 
+import os
 import sys
 import requests
 from requests.auth import HTTPBasicAuth
@@ -21,7 +22,9 @@ from requests.auth import HTTPBasicAuth
 # ---------------------------------------------------------------------------
 
 FHIR_BASE = sys.argv[1].rstrip("/") if len(sys.argv) > 1 else "http://localhost:8080/fhir"
-AUTH = HTTPBasicAuth("admin", "password")
+FHIR_USER = os.environ.get("FHIR_USERNAME", "admin")
+FHIR_PASS = os.environ.get("FHIR_PASSWORD", "password")
+AUTH = HTTPBasicAuth(FHIR_USER, FHIR_PASS)
 HEADERS = {
     "Content-Type": "application/fhir+json",
     "Accept": "application/fhir+json",
@@ -151,7 +154,7 @@ def delete_all_resources() -> None:
 
 def main() -> None:
     print(f"FHIR server : {FHIR_BASE}")
-    print(f"Auth        : admin / password")
+    print(f"Auth        : {FHIR_USER} / ***")
     print()
 
     if try_expunge():
