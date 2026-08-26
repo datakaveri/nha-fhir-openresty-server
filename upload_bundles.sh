@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-FHIR_URL="http://localhost:8180/fhir"
-AUTH="Basic YWRtaW46cGFzc3dvcmQ="
-OUTPUT_DIR="$(dirname "$0")/output"
+FHIR_URL="${FHIR_URL:-http://localhost:8180/fhir}"
+FHIR_USER="${FHIR_USER:-admin}"
+FHIR_PASS="${FHIR_PASS:-password}"
+OUTPUT_DIR="${OUTPUT_DIR:-$(dirname "$0")/output}"
 
 success=0
 failed=0
@@ -20,7 +21,7 @@ for file in "$OUTPUT_DIR"/**/*.json; do
   http_code=$(curl -s -o /tmp/fhir_response.json -w "%{http_code}" \
     --request POST \
     --url "$FHIR_URL" \
-    --header "Authorization: $AUTH" \
+    --user "$FHIR_USER:$FHIR_PASS" \
     --header "Content-Type: application/fhir+json" \
     --data "@$file")
 

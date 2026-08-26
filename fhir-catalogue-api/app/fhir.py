@@ -307,7 +307,8 @@ def _shape_record(condition: dict, patients: dict[str, dict]) -> dict | None:
     patient_id = subject_ref.split("/", 1)[1] if "/" in subject_ref else subject_ref
     patient = patients.get(patient_id, {})
 
-    coding = condition.get("code", {}).get("coding", [{}])[0]
+    codings = condition.get("code", {}).get("coding", [])
+    coding = next((c for c in codings if c.get("system") == SNOMED_SYSTEM), codings[0] if codings else {})
     status = (
         condition.get("clinicalStatus", {})
         .get("coding", [{}])[0]
