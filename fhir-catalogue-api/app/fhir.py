@@ -63,75 +63,31 @@ class FHIRClient:
             return False
 
     # ------------------------------------------------------------------
-    # Package → Patient IDs  (cached)
-    # ------------------------------------------------------------------
-
-    async def get_patient_ids_for_package(self, package_code: str) -> list[str]:
-        """
-        Resolves patient IDs for a package.
-
-        There's a single catalogue package now (see app/catalogue.py) covering
-        every patient currently in FHIR — Coverage.class no longer carries a
-        package code (it's a generic PMJAY plan code, identical for everyone
-        in this dataset), and there's no other reliable per-package boundary
-        to scope by. `package_code` is accepted for interface compatibility
-        with the rest of the client but not used to filter.
-        """
-        cache_key = "patient_ids:all"
-        cached = self._cache.get(cache_key)
-        if cached is not None:
-            return cached
-
-        ids: list[str] = []
-        url_or_params: str | dict = {"_elements": "id", "_count": 500}
-        error_occurred = False
-
-        while url_or_params:
-            try:
-                if isinstance(url_or_params, dict):
-                    r = await self._client.get("/Patient", params=url_or_params)
-                else:
-                    r = await self._client.get(url_or_params)
-                r.raise_for_status()
-            except httpx.HTTPError as exc:
-                logger.warning("FHIR Patient query failed: %s", exc)
-                error_occurred = True
-                break
-
-            bundle = r.json()
-            for entry in bundle.get("entry", []):
-                pid = entry.get("resource", {}).get("id")
-                if pid:
-                    ids.append(pid)
-
-            url_or_params = _next_link(bundle)
-
-        if not error_occurred:
-            self._cache.set(cache_key, ids)
-        return ids
-
-    # ------------------------------------------------------------------
     # SNOMED condition count (cached)
     # ------------------------------------------------------------------
 
     async def get_condition_count(self, package_code: str, snomed_code: str) -> int | None:
+        """
+        `package_code` is accepted for interface/cache-key compatibility only:
+        there's a single catalogue package covering every patient currently in
+        FHIR (see app/catalogue.py), so counting is never actually scoped by
+        package — it's a plain code-based Condition count. (An earlier version
+        additionally filtered by a comma-separated list of every patient ID,
+        which was always a no-op given the single-package setup, and broke
+        outright once the patient count grew past a few hundred and the
+        resulting subject= query string exceeded URL length limits.)
+        """
         cache_key = f"count:{package_code}:{snomed_code}"
         cached = self._cache.get(cache_key)
         if cached is not None:
             return cached
 
-        patient_ids = await self.get_patient_ids_for_package(package_code)
-        if not patient_ids:
-            return 0
-
-        # HAPI supports comma-separated subject list
-        subjects = ",".join(f"Patient/{pid}" for pid in patient_ids)
         code_param = f"{SNOMED_SYSTEM}|{snomed_code}"
 
         try:
             r = await self._client.get(
                 "/Condition",
-                params={"code": code_param, "subject": subjects, "_summary": "count"},
+                params={"code": code_param, "_summary": "count"},
             )
             r.raise_for_status()
             count = r.json().get("total", 0)
@@ -148,25 +104,16 @@ class FHIRClient:
 
     async def get_patients(self, package_code: str, snomed_code: str) -> tuple[int, list[dict], dict]:
         """
-        Returns (total, list_of_patient_records, raw_bundle).
-
-        Two-step:
-          1. Resolve patient IDs for the package via Coverage.
-          2. Fetch Conditions matching the SNOMED code for those patients,
-             including the linked Patient resource.
+        Returns (total, list_of_patient_records, raw_bundle) for every
+        Condition matching the SNOMED code, with the linked Patient resource
+        included. `package_code` is unused (see get_condition_count).
         """
-        patient_ids = await self.get_patient_ids_for_package(package_code)
-        if not patient_ids:
-            return 0, [], _empty_bundle()
-
-        subjects = ",".join(f"Patient/{pid}" for pid in patient_ids)
         code_param = f"{SNOMED_SYSTEM}|{snomed_code}"
 
         conditions: list[dict] = []
         patients_by_id: dict[str, dict] = {}
         url_or_params: str | dict = {
             "code": code_param,
-            "subject": subjects,
             "_include": "Condition:subject",
             "_count": 200,
         }
@@ -209,13 +156,9 @@ class FHIRClient:
 
         FHIR represents OR as comma-separated values within one code parameter:
           code=http://snomed.info/sct|4834000,http://snomed.info/sct|302231008
-        A single FHIR round-trip retrieves all matches at once.
+        A single FHIR round-trip retrieves all matches at once. `package_code`
+        is unused (see get_condition_count).
         """
-        patient_ids = await self.get_patient_ids_for_package(package_code)
-        if not patient_ids:
-            return 0, [], _empty_bundle()
-
-        subjects = ",".join(f"Patient/{pid}" for pid in patient_ids)
         # FHIR OR: comma-separated token values in one parameter
         code_param = ",".join(f"{SNOMED_SYSTEM}|{code}" for code in snomed_codes)
 
@@ -223,7 +166,6 @@ class FHIRClient:
         patients_by_id: dict[str, dict] = {}
         url_or_params: str | dict = {
             "code": code_param,
-            "subject": subjects,
             "_include": "Condition:subject",
             "_count": 500,
         }
@@ -328,10 +270,6 @@ def _shape_record(condition: dict, patients: dict[str, dict]) -> dict | None:
         "condition_display": coding.get("display", ""),
         "condition_status": status,
     }
-
-
-def _empty_bundle() -> dict:
-    return {"resourceType": "Bundle", "type": "searchset", "total": 0, "entry": []}
 
 
 def _build_bundle(conditions: list[dict], patients: dict[str, dict]) -> dict:

@@ -13,6 +13,11 @@ class Settings(BaseSettings):
     # How long (seconds) to cache patient-ID lists and SNOMED counts from FHIR
     count_cache_ttl: int = 300
 
+    # Postgres holding the catalogue's SNOMED code list (populated by
+    # refresh_catalogue.py) — lives in a separate "catalogue" schema in the
+    # same database HAPI FHIR uses, so it never touches HAPI's own tables.
+    database_url: str = "postgresql://admin:password@db:5432/hapi"
+
     # Path where snomed_mapped/NHA/PS1/ STG files are mounted
     snomed_mapped_dir: str = "/app/snomed_mapped"
 

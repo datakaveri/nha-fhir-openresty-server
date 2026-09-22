@@ -9,3 +9,7 @@ snomed_mapped
 output_2/
 nha_data/
 filled_bundles_validated/
+fhir_v6/
+anonymized_fhir_bundles_sep22/
+converted_anonymized_fhir_bundles_sep22/
+fhir_legacy_bundles/

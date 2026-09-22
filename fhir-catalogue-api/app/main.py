@@ -1,9 +1,11 @@
+import asyncio
 from contextlib import asynccontextmanager
 
 from fastapi import Depends, FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
+from . import db
 from .catalogue import (
     get_all_packages,
     get_package,
@@ -44,6 +46,23 @@ ALLOWED_QUERY_RESOURCE_TYPES = {
 }
 
 
+# Cap concurrent per-code count requests to the upstream FHIR server —
+# the catalogue can hold hundreds of codes, and firing them all at once
+# would just trade one bottleneck for hammering the server.
+_COUNT_CONCURRENCY = 20
+
+
+async def _codes_with_counts(fhir: FHIRClient, package_id: str, raw_codes: list[dict]) -> list[SnomedCode]:
+    semaphore = asyncio.Semaphore(_COUNT_CONCURRENCY)
+
+    async def fetch(c: dict) -> SnomedCode:
+        async with semaphore:
+            count = await fhir.get_condition_count(package_id.upper(), c["code"])
+        return SnomedCode(code=c["code"], display=c["display"], patient_count=count)
+
+    return list(await asyncio.gather(*(fetch(c) for c in raw_codes)))
+
+
 def _validate_execute_query(resource_type: str, query: str) -> None:
     if resource_type not in ALLOWED_QUERY_RESOURCE_TYPES:
         raise HTTPException(status_code=400, detail=f"Unsupported resource_type '{resource_type}'")
@@ -81,7 +100,9 @@ async def lifespan(app: FastAPI):
         password=settings.fhir_password,
         cache_ttl=settings.count_cache_ttl,
     )
+    await db.init_pool(settings.database_url)
     yield
+    await db.close_pool()
     await _fhir_client.close()
 
 
@@ -181,7 +202,7 @@ async def health(
     response_model=list[Package],
 )
 async def list_packages():
-    return [Package(**p) for p in get_all_packages()]
+    return [Package(**p) for p in await get_all_packages()]
 
 
 @app.get(
@@ -200,15 +221,12 @@ async def get_package_detail(
     package_id: str,
     fhir: FHIRClient = Depends(get_fhir_client),
 ):
-    pkg = get_package(package_id)
+    pkg = await get_package(package_id)
     if not pkg:
         raise HTTPException(status_code=404, detail=f"Package '{package_id}' not found in catalogue")
 
-    raw_codes = get_snomed_codes(package_id) or []
-    snomed_codes = []
-    for c in raw_codes:
-        count = await fhir.get_condition_count(package_id.upper(), c["code"])
-        snomed_codes.append(SnomedCode(code=c["code"], display=c["display"], patient_count=count))
+    raw_codes = await get_snomed_codes(package_id) or []
+    snomed_codes = await _codes_with_counts(fhir, package_id, raw_codes)
 
     pkg.pop("snomed_codes", None)
     return PackageDetail(**pkg, snomed_codes=snomed_codes)
@@ -230,15 +248,11 @@ async def list_snomed_codes(
     package_id: str,
     fhir: FHIRClient = Depends(get_fhir_client),
 ):
-    raw_codes = get_snomed_codes(package_id)
+    raw_codes = await get_snomed_codes(package_id)
     if raw_codes is None:
         raise HTTPException(status_code=404, detail=f"Package '{package_id}' not found in catalogue")
 
-    result = []
-    for c in raw_codes:
-        count = await fhir.get_condition_count(package_id.upper(), c["code"])
-        result.append(SnomedCode(code=c["code"], display=c["display"], patient_count=count))
-    return result
+    return await _codes_with_counts(fhir, package_id, raw_codes)
 
 
 # ---------------------------------------------------------------------------
@@ -270,16 +284,16 @@ async def query_patients(
     snomed_code: str = Query(..., description="SNOMED CT concept code", example="4834000"),
     fhir: FHIRClient = Depends(get_fhir_client),
 ):
-    if not get_package(package):
+    if not await get_package(package):
         raise HTTPException(status_code=404, detail=f"Package '{package}' not found in catalogue")
 
-    if not is_valid_snomed_for_package(package, snomed_code):
+    if not await is_valid_snomed_for_package(package, snomed_code):
         raise HTTPException(
             status_code=422,
             detail=f"SNOMED code '{snomed_code}' is not in the catalogue for package '{package}'",
         )
 
-    display = get_snomed_display(package, snomed_code) or snomed_code
+    display = await get_snomed_display(package, snomed_code) or snomed_code
     total, patients, raw = await fhir.get_patients(package.upper(), snomed_code)
 
     return PatientQueryResult(
@@ -341,10 +355,11 @@ async def query_patients_multi(
     body: PatientMultiQuery,
     fhir: FHIRClient = Depends(get_fhir_client),
 ):
-    if not get_package(body.package):
+    if not await get_package(body.package):
         raise HTTPException(status_code=404, detail=f"Package '{body.package}' not found in catalogue")
 
-    valid_codes = [c for c in body.snomed_codes if is_valid_snomed_for_package(body.package, c)]
+    package_codes = {c["code"] for c in (await get_snomed_codes(body.package) or [])}
+    valid_codes = [c for c in body.snomed_codes if c in package_codes]
     invalid_codes = [c for c in body.snomed_codes if c not in valid_codes]
 
     if not valid_codes:
