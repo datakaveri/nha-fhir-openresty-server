@@ -13,6 +13,11 @@ Usage:
 Reads FHIR_USERNAME/FHIR_PASSWORD (or CATALOGUE_FHIR_USERNAME/PASSWORD)
 from the environment for FHIR auth, same convention as the other scripts
 in this repo.
+
+DATABASE_URL can also be supplied as discrete POSTGRES_HOST/PORT/DB/USER/
+PASSWORD env vars instead (same names app/config.py reads) — lets this run
+as a Kubernetes Job using the exact same secretKeyRef entries as the
+catalogue-api Deployment, with no shell string-concatenation required.
 """
 
 import os
@@ -24,7 +29,22 @@ import httpx
 
 FHIR_BASE = (sys.argv[1].rstrip("/") if len(sys.argv) > 1
              else os.environ.get("CATALOGUE_FHIR_BASE_URL", "http://localhost:8080/fhir").rstrip("/"))
-DATABASE_URL = sys.argv[2] if len(sys.argv) > 2 else os.environ.get("DATABASE_URL", "postgresql://admin:password@localhost:5433/hapi")
+
+
+def _database_url() -> str:
+    if len(sys.argv) > 2:
+        return sys.argv[2]
+    if os.environ.get("DATABASE_URL"):
+        return os.environ["DATABASE_URL"]
+    host = os.environ.get("POSTGRES_HOST", "localhost")
+    port = os.environ.get("POSTGRES_PORT", "5433")
+    db = os.environ.get("POSTGRES_DB", "hapi")
+    user = os.environ.get("POSTGRES_USER", "admin")
+    password = os.environ.get("POSTGRES_PASSWORD", "password")
+    return f"postgresql://{user}:{password}@{host}:{port}/{db}"
+
+
+DATABASE_URL = _database_url()
 
 FHIR_USER = os.environ.get("FHIR_USERNAME") or os.environ.get("CATALOGUE_FHIR_USERNAME", "admin")
 FHIR_PASS = os.environ.get("FHIR_PASSWORD") or os.environ.get("CATALOGUE_FHIR_PASSWORD", "password")

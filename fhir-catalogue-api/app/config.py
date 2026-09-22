@@ -16,7 +16,21 @@ class Settings(BaseSettings):
     # Postgres holding the catalogue's SNOMED code list (populated by
     # refresh_catalogue.py) — lives in a separate "catalogue" schema in the
     # same database HAPI FHIR uses, so it never touches HAPI's own tables.
-    database_url: str = "postgresql://admin:password@db:5432/hapi"
+    # Discrete fields (not one DATABASE_URL string) so user/password can come
+    # from a Kubernetes Secret via secretKeyRef without needing shell
+    # interpolation to combine them.
+    postgres_host: str = "db"
+    postgres_port: int = 5432
+    postgres_db: str = "hapi"
+    postgres_user: str = "admin"
+    postgres_password: str = "password"
+
+    @property
+    def database_url(self) -> str:
+        return (
+            f"postgresql://{self.postgres_user}:{self.postgres_password}"
+            f"@{self.postgres_host}:{self.postgres_port}/{self.postgres_db}"
+        )
 
     # Path where snomed_mapped/NHA/PS1/ STG files are mounted
     snomed_mapped_dir: str = "/app/snomed_mapped"
